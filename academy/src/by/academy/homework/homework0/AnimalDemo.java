@@ -1,4 +1,4 @@
-package by.academy.homework0;
+package by.academy.homework.homework0;
 
 public class AnimalDemo {
 
