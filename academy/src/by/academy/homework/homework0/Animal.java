@@ -22,7 +22,7 @@ public class Animal {
 	}
 	
 	public Animal() {
-		
+		super();
 	}
 	
 	public Animal(int age, String nickname) {
