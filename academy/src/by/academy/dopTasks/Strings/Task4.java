@@ -11,23 +11,22 @@ public class Task4 {
 
 		
 		int n = 5;
-
 		//StringBuilder str = new StringBuilder();
 		int arr[] = new int[n];
-		String line[] = new String[n];
+		//String line[] = scan.nextLine().split(" ");
+		
+		String line[] = {"ssdde","src","buiilldd","tr","ff"};
 		String s;
 
 		for (int i = 0; i < n; i++) {
-			line[i] = scan.nextLine();
-		}
-
-		for (int i = 0; i < n; i++) {
 			StringBuilder str = new StringBuilder();
-			for (int j = i; j < line[i].length(); j++) {
+			for (int j = 0; j < line[i].length(); j++) {
 				s = String.valueOf(line[i].charAt(j));
 
+				System.out.println(i+ ":hhhh");
 				if (line[i].indexOf(s) != -1) {
 					str.append(s);
+					System.out.println(i+ ":gggg");
 				}
 			}
 
@@ -36,7 +35,7 @@ public class Task4 {
 		}
 
 		int min = arr[0], minIndex = 0;
-		for (int i = 1; i < n; i++) {
+		for (int i = 0; i < n; i++) {
 			System.out.println(arr[i]);
 			if (arr[i] < min) {
 				min = arr[i];
