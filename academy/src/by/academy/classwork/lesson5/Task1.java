@@ -9,8 +9,9 @@ public class Task1 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		String str = "cab";
 		//String str ="dfsfgg, sdsd, cab, dfsdf, ccab";
-		Matcher matcher = pattern.matcher("cab");
+		Matcher matcher = pattern.matcher("["+str+"]");
 		//Matcher matcher2= pattern.matcher(str);
 		boolean b = matcher.matches();
 		
