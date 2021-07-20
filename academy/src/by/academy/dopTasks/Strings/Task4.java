@@ -9,13 +9,12 @@ public class Task4 {
 
 		Scanner scan = new Scanner(System.in);
 
-		
 		int n = 5;
-		//StringBuilder str = new StringBuilder();
+		// StringBuilder str = new StringBuilder();
 		int arr[] = new int[n];
-		//String line[] = scan.nextLine().split(" ");
-		
-		String line[] = {"ssdde","src","buiilldd","tr","ff"};
+		// String line[] = scan.nextLine().split(" ");
+
+		String line[] = { "ssdde", "scrc", "buiilldd", "tr", "ff" };
 		String s;
 
 		for (int i = 0; i < n; i++) {
@@ -23,15 +22,18 @@ public class Task4 {
 			for (int j = 0; j < line[i].length(); j++) {
 				s = String.valueOf(line[i].charAt(j));
 
-				System.out.println(i+ ":hhhh");
-				if (line[i].indexOf(s) != -1) {
+//				if (line[i].indexOf(s) != -1 && line[i].indexOf(s) != j && str.indexOf(s) == -1) {
+//					str.append(s);
+//				}
+				
+				if (str.indexOf(s) == -1) {
 					str.append(s);
-					System.out.println(i+ ":gggg");
 				}
+				
 			}
 
 			arr[i] = str.length();
-			//str.setLength(0);
+			// str.setLength(0);
 		}
 
 		int min = arr[0], minIndex = 0;
