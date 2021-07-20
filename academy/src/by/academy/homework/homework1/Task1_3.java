@@ -5,8 +5,7 @@ import java.util.Scanner;
 public class Task1_3 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+//????? 14
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter a number from 1 to 10: ");
 		int value = scan.nextInt();
