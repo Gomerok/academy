@@ -5,19 +5,17 @@ import java.util.regex.Pattern;
 
 public class Task1 {
 
-	static Pattern pattern = Pattern.compile("cab|ccab|cccab");
+	static Pattern pattern = Pattern.compile("c{0,3}ab");
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
-		String str = "cab";
-		//String str ="dfsfgg, sdsd, cab, dfsdf, ccab";
-		Matcher matcher = pattern.matcher("["+str+"]");
-		//Matcher matcher2= pattern.matcher(str);
+		String str ="dfsfgg, sdsd, cab , dfsdf, cccab";
+		Matcher matcher = pattern.matcher(str);
+		
 		boolean b = matcher.matches();
 		
-//		while(matcher2.find()) {
-//			
-//		}
+		while(matcher.find()) {
+			System.out.println(str.substring(matcher.start(), matcher.end()));
+		}
 		
 		System.out.println(b);
 
