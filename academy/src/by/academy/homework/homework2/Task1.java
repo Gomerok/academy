@@ -7,8 +7,7 @@ import java.util.regex.Pattern;
 public class Task1 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
 		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("¬ведите 2 строки через пробел \"????...\" \"????...\":");

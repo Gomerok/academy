@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Task4 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		Scanner scan = new Scanner(System.in);
 
@@ -29,7 +28,7 @@ public class Task4 {
 				if (str.indexOf(s) == -1) {
 					str.append(s);
 				}
-				
+
 			}
 
 			arr[i] = str.length();
