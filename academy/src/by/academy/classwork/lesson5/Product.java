@@ -8,7 +8,7 @@ public class Product {
 
 	public Product() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public Product(String name, double price, int quantity) {
@@ -27,7 +27,7 @@ public class Product {
 	}
 
 	public double getPrice() {
-		return price* this.quantity;
+		return price * this.quantity;
 	}
 
 	public void setPrice(int price) {
@@ -47,7 +47,7 @@ public class Product {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + (int)price;
+		result = prime * result + (int) price;
 		result = prime * result + quantity;
 		return result;
 	}
@@ -85,7 +85,5 @@ public class Product {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
 
 }
