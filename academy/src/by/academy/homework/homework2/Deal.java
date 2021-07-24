@@ -1,82 +1,50 @@
 package by.academy.homework.homework2;
 
 import java.util.Scanner;
+import java.util.Random;
 
 public class Deal {
- 
+
+	private static final Scanner scan = new Scanner(System.in);
+	private static final Random rand = new Random();
+
 	public static void main(String[] args) {
- 
-		// часть 1 - инициализация переменных
-		int cardsPerPlayer = 5;
-		int players =0 ;       
- 
-		String[] suits = {
-				"Пик", "Бубен", "Черв", "Треф"
-		};
- 
-		String[] rank = {
-				"2", "3", "4", "5", "6", "7", "8", "9", "10",
-				"Валет", "Королева", "Король", "Туз"
-		};
- 
-		int n = suits.length * rank.length; // количество карт
- 
- 
-		// часть 2 - ввод с консоли 
-		for(;;){
-			Scanner sc = new Scanner(System.in);
-			System.out.println("Введите количество игроков: ");   
- 
-			if(sc.hasNextInt()){
- 
-				players = sc.nextInt();
-				if(cardsPerPlayer * players <= n){
-					break;
-				} else { 
-					if (players ==0){
- 
-						System.out.println("Игра прекращена.");
-						break;
- 
-					} else if (players<0){
-						
-						System.out.println("Число игроков не может быть меньше 0");
-					
-					} else{
-						
-						System.out.println("Слишком много игроков!");
-					}
-				}     	
- 
-			} else{
-				System.out.println("Вы ввели не число, или Ваше число слишком большое!");
- 
+
+		int cards = 5;
+		String suits[] = { "Бубен", "Черв", "Треф", "Пик" };
+		String rank[] = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Валет", "Королева", "Король", "Туз" };
+		int n = suits.length * rank.length;
+
+		String deck[] = new String[n];
+		for (int i = 0, k = 0; i < suits.length; i++) {
+			for (int j = 0; j < rank.length; j++, k++) {
+				deck[k] = suits[i] + "/" + rank[j];
 			}
 		}
- 
- 
-		// часть 3 - инициализация колоды
-		String[] deck = new String[n];
-		for (int i = 0; i < rank.length; i++) {
-			for (int j = 0; j < suits.length; j++) {
-				deck[suits.length*i + j] = rank[i] + " " + suits[j];
-			}
+
+		System.out.println("Введите количество игроков от 2 до 10:");
+		int players = scan.nextInt();
+
+		while (players < 2 || players > 10) {
+			System.out.println("Введено неверное количество игроков, введите заново:");
+			players = scan.nextInt();
 		}
- 
-		// часть 4 - перетасовка колоды
+
+		String temp;
 		for (int i = 0; i < n; i++) {
-			int r = i + (int) (Math.random() * (n-i)); // случайная карта в колоде
-			String temp = deck[r];
+			int r = rand.nextInt(n);
+			temp = deck[i];
 			deck[r] = deck[i];
 			deck[i] = temp;
 		}
- 
-		// часть 5 - перетасованная колода выводится на экран
-		for (int i = 0; i < players * cardsPerPlayer; i++) {
+
+		for (int i = 0; i < cards * players; i++) {
 			System.out.println(deck[i]);
-			if (i % cardsPerPlayer == cardsPerPlayer - 1)
+			if ((i+1) % cards == 0) {
 				System.out.println();
+			}
 		}
+		scan.close();
 	}
- 
+
 }

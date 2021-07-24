@@ -4,17 +4,23 @@ import java.util.Scanner;
 
 public class Task3 {
 
-	public static void main(String[] args) {
-		
-		Scanner scan = new Scanner(System.in);
-//		String line[] = scan.nextLine().split(" ");
-		
-		String line[] = {"Helloo","Word"};
-		
-		StringBuilder word = new StringBuilder();
-		word.append(line[0].substring(0, line[0].length()/2)).append(line[1].substring(line[1].length()/2, line[1].length()));
+	private static final Scanner scan = new Scanner(System.in);
 
-		System.out.println(word);
+	public static void main(String[] args) {
+
+		System.out.println("Введите 2 слова через пробел с чётным количеством символов:");
+		String words[] = scan.nextLine().split(" ");
+
+		while (words.length != 2 || words[0].length() % 2 != 0 || words[1].length() % 2 != 0) {
+			System.out.println("Неправильный ввод, введите заново:");
+			words = scan.nextLine().split(" ");
+		}
+
+		StringBuilder word = new StringBuilder();
+		word.append(words[0].substring(0, words[0].length() / 2))
+				.append(words[1].substring(words[1].length() / 2, words[1].length()));
+
+		System.out.println("Получившееся слово: " + word);
 		scan.close();
 	}
 
