@@ -10,54 +10,47 @@ public class Operation {
 		String month = scan.nextLine();
 
 		switch (month) {
-		case ("Январь"):
+		case ("РЇРЅРІР°СЂСЊ"):
 			System.out.println("1");
 			break;
-		case ("Февраль"):
+		case ("Р¤РµРІСЂР°Р»СЊ"):
 			System.out.println("2");
 			break;
-		case ("Март"):
+		case ("РњР°СЂС‚"):
 			System.out.println("3");
 			break;
-		case ("Апрель"):
+		case ("РђРїСЂРµР»СЊ"):
 			System.out.println("4");
 			break;
-		case ("Май"):
+		case ("РњР°Р№"):
 			System.out.println("5");
 			break;
-		case ("Июнь"):
+		case ("РСЋРЅСЊ"):
 			System.out.println("6");
 			break;
-		case ("Июль"):
+		case ("РСЋР»СЊ"):
 			System.out.println("7");
 			break;
-		case ("Август"):
+		case ("РђРІРіСѓСЃС‚"):
 			System.out.println("8");
 			break;
-		case ("Сентябрь"):
+		case ("РЎРµРЅС‚СЏР±СЂСЊ"):
 			System.out.println("9");
 			break;
-		case ("Октябрь"):
+		case ("РћРєС‚СЏР±СЂСЊ"):
 			System.out.println("10");
 			break;
-		case ("Ноябрь"):
+		case ("РќРѕСЏР±СЂСЊ"):
 			System.out.println("11");
 			break;
-		case ("Декабрь"):
+		case ("Р”РµРєР°Р±СЂСЊ"):
 			System.out.println("12");
 			break;
-		default: System.out.println("месяц введён неправильно");
+		default: System.out.println("Р§С‚Рѕ-С‚Рѕ РІРІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕ");
 
 		}
 
 		scan.close();
-		
-//		// TODO Auto-generated method stub
-//		int i = 2;
-//		int j = 3;
-//		int k = j + j;
-//		System.out.println(i + "+" + j + "=" + k);
-
 	}
 
 }
