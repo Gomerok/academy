@@ -64,16 +64,16 @@ public class Deal {
 		
 	}
 	
-//	public void deal() {
-//		System.out.println("Bill:");
-//		for(Product p: getProducts()) {
-//			System.out.println(p.getName() +" price: " + p.calcPrice());
-//		}
-//		
-//		System.out.println("-------------------------");
-//		System.out.println(calcFullPrice());
-//		
-//	}
+	public void deal() {
+		System.out.println("Bill:");
+		for(Product p: getProducts()) {
+			System.out.println(p.getName() +" price: " + p.calcPrice());
+		}
+		
+		System.out.println("-------------------------");
+		System.out.println(calcFullPrice());
+		
+	}
 	
 	@Override
 	public int hashCode() {

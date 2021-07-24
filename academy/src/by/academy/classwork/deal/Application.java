@@ -18,14 +18,15 @@ public class Application {
 		
 		deal.setProducts(products);
 		
+		deal.deal();
 	
-		System.out.println("Bill:");
-		for(Product p: deal.getProducts()) {
-			System.out.println(p.getName() +" price: " + p.calcPrice());
-		}
-		
-		System.out.println("-------------------------");
-		System.out.println(deal.calcFullPrice());
+//		System.out.println("Bill:");
+//		for(Product p: deal.getProducts()) {
+//			System.out.println(p.getName() +" price: " + p.calcPrice());
+//		}
+//		
+//		System.out.println("-------------------------");
+//		System.out.println(deal.calcFullPrice());
 		
 		
 		
