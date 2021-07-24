@@ -1,14 +1,13 @@
-package by.academy.classwork.lesson5;
+package by.academy.classwork.deal;
 
-public class Product {
+public abstract class Product {
 
-	private String name;
-	private double price;
-	private int quantity;
+	protected String name;
+	protected double price;
+	protected int quantity;
 
 	public Product() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Product(String name, double price, int quantity) {
@@ -25,9 +24,9 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public double getPrice() {
-		return price* this.quantity;
+		return price;
 	}
 
 	public void setPrice(int price) {
@@ -41,13 +40,22 @@ public class Product {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+	
+	protected abstract double discount();
+	
+	public double calcPrice() {
+		return (1- discount())*price * quantity;
+	}
+	
+	
+	
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + (int)price;
+		result = prime * result + (int) price;
 		result = prime * result + quantity;
 		return result;
 	}
@@ -85,7 +93,5 @@ public class Product {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
 
 }
