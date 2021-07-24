@@ -1,21 +1,19 @@
-package by.academy.classwork.lesson5;
+package by.academy.classwork.deal;
 
-public class Product {
+public class User {
 
 	private String name;
-	private double price;
-	private int quantity;
+	private int maney;
 
-	public Product() {
+	public User() {
 		super();
 
 	}
 
-	public Product(String name, double price, int quantity) {
+	public User(String name, int maney) {
 		super();
 		this.name = name;
-		this.price = price;
-		this.quantity = quantity;
+		this.maney = maney;
 	}
 
 	public String getName() {
@@ -26,29 +24,20 @@ public class Product {
 		this.name = name;
 	}
 
-	public double getPrice() {
-		return price * this.quantity;
+	public int getManey() {
+		return maney;
 	}
 
-	public void setPrice(int price) {
-		this.price = price;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setManey(int maney) {
+		this.maney = maney;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + maney;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + (int) price;
-		result = prime * result + quantity;
 		return result;
 	}
 
@@ -60,15 +49,13 @@ public class Product {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Product other = (Product) obj;
+		User other = (User) obj;
+		if (maney != other.maney)
+			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
-			return false;
-		if (price != other.price)
-			return false;
-		if (quantity != other.quantity)
 			return false;
 		return true;
 	}
@@ -76,12 +63,10 @@ public class Product {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Product [name=");
+		builder.append("User [name=");
 		builder.append(name);
-		builder.append(", price=");
-		builder.append(price);
-		builder.append(", quantity=");
-		builder.append(quantity);
+		builder.append(", maney=");
+		builder.append(maney);
 		builder.append("]");
 		return builder.toString();
 	}
