@@ -12,7 +12,7 @@ public class Solution {
 
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = 0; j < arr.length; j++) {
-				if ((arr[i] - arr[j]) == k && arr[i] != arr[j] ) {
+				if ((arr[i] - arr[j]) == k && arr[i] != arr[j]) {
 					pairsCount++;
 				}
 			}

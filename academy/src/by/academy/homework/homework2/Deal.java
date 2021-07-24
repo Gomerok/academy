@@ -40,7 +40,7 @@ public class Deal {
 
 		for (int i = 0; i < cards * players; i++) {
 			System.out.println(deck[i]);
-			if ((i+1) % cards == 0) {
+			if ((i + 1) % cards == 0) {
 				System.out.println();
 			}
 		}
