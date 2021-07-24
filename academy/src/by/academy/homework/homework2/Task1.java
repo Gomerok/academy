@@ -12,7 +12,7 @@ public class Task1 {
 
 		System.out.println("Введите 2 слова через пробел:");
 		String words[] = scan.nextLine().split(" ");
-
+//
 //		while (words.length < 2) {
 //			System.out.println("Неправильный ввод, введите заново:");
 //			words = scan.nextLine().split(" ");
