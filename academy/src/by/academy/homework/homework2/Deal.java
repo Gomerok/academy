@@ -9,10 +9,10 @@ public class Deal {
 	private static final Random rand = new Random();
 
 	public static void main(String[] args) {
-//
+
 		int cards = 5;
-		String suits[] = { "Бубен", "Черв", "Треф", "Пик" };
-		String rank[] = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Валет", "Королева", "Король", "Туз" };
+		String suits[] = { "Р‘СѓР±РµРЅ", "Р§РµСЂРІ", "РўСЂРµС„", "РџРёРє" };
+		String rank[] = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Р’Р°Р»РµС‚", "РљРѕСЂРѕР»РµРІР°", "РљРѕСЂРѕР»СЊ", "РўСѓР·" };
 		int n = suits.length * rank.length;
 
 		String deck[] = new String[n];
@@ -22,11 +22,11 @@ public class Deal {
 			}
 		}
 
-		System.out.println("Введите количество игроков от 2 до 10:");
+		System.out.println("Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РёРіСЂРѕРєРѕРІ РѕС‚ 2 РґРѕ 10:");
 		int players = scan.nextInt();
 
 		while (players < 2 || players > 10) {
-			System.out.println("Введено неверное количество игроков, введите заново:");
+			System.out.println("Р’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РёРіСЂРѕРєРѕРІ, РІРІРµРґРёС‚Рµ Р·Р°РЅРѕРІРѕ:");
 			players = scan.nextInt();
 		}
 

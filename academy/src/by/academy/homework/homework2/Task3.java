@@ -8,11 +8,11 @@ public class Task3 {
 
 	public static void main(String[] args) {
 
-		System.out.println("Введите 2 слова через пробел с чётным количеством символов:");
+		System.out.println("Р’РІРµРґРёС‚Рµ 2 СЃР»РѕРІР° С‡РµСЂРµР· РїСЂРѕР±РµР» СЃ С‡С‘С‚РЅС‹Рј РєРѕР»РёС‡РµСЃС‚РІРѕРј СЃРёРјРІРѕР»РѕРІ:");
 		String words[] = scan.nextLine().split(" ");
 
 		while (words.length != 2 || words[0].length() % 2 != 0 || words[1].length() % 2 != 0) {
-			System.out.println("Неправильный ввод, введите заново:");
+			System.out.println("РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ РІРІРѕРґ, РІРІРµРґРёС‚Рµ Р·Р°РЅРѕРІРѕ:");
 			words = scan.nextLine().split(" ");
 		}
 
@@ -20,7 +20,7 @@ public class Task3 {
 		word.append(words[0].substring(0, words[0].length() / 2))
 				.append(words[1].substring(words[1].length() / 2, words[1].length()));
 
-		System.out.println("Получившееся слово: " + word);
+		System.out.println("РџРѕР»СѓС‡РёРІС€РµРµСЃСЏ СЃР»РѕРІРѕ: " + word);
 		scan.close();
 	}
 

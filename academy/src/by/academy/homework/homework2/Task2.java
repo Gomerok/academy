@@ -8,10 +8,10 @@ public class Task2 {
 
 	public static void main(String[] args) {
 
-		System.out.println("Введите слова через пробел(как минимум 2 слова):");
+		System.out.println("Р’РІРµРґРёС‚Рµ СЃР»РѕРІР° С‡РµСЂРµР· РїСЂРѕР±РµР»(РєР°Рє РјРёРЅРёРјСѓРј 2 СЃР»РѕРІР°):");
 		String words[] = scan.nextLine().split(" ");
 		while (words.length < 2) {
-			System.out.println("Неправильный ввод, введите заново:");
+			System.out.println("РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ РІРІРѕРґ, РІРІРµРґРёС‚Рµ Р·Р°РЅРѕРІРѕ:");
 			words = scan.nextLine().split(" ");
 		}
 		StringBuilder symbols = new StringBuilder();
@@ -36,7 +36,7 @@ public class Task2 {
 				minLengthIndex = i;
 			}
 		}
-		System.out.println("Слово с минимальным числом различных символов: " + words[minLengthIndex]);
+		System.out.println("РЎР»РѕРІРѕ СЃ РјРёРЅРёРјР°Р»СЊРЅС‹Рј С‡РёСЃР»РѕРј СЂР°Р·Р»РёС‡РЅС‹С… СЃРёРјРІРѕР»РѕРІ: " + words[minLengthIndex]);
 
 		scan.close();
 

@@ -10,11 +10,11 @@ public class Task1 {
 
 		Scanner scan = new Scanner(System.in);
 
-		System.out.println("Введите 2 слова через пробел:");
+		System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 2 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ:");
 		String words[] = scan.nextLine().split(" ");
 
 //		while (words.length < 2) {
-//			System.out.println("Неправильный ввод, введите заново:");
+//			System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ:");
 //			words = scan.nextLine().split(" ");
 //		}
 //		
@@ -28,9 +28,9 @@ public class Task1 {
 //		}
 //
 //		if (counter == words[0].length()) {
-//			System.out.println("Строки из одинаковых символов");
+//			System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
 //		} else {
-//			System.out.println("Строки из разных символов");
+//			System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
 //		}
 		
 		
