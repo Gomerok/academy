@@ -9,7 +9,7 @@ public class Deal {
 	private static final Random rand = new Random();
 
 	public static void main(String[] args) {
-
+//
 		int cards = 5;
 		String suits[] = { "Бубен", "Черв", "Треф", "Пик" };
 		String rank[] = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Валет", "Королева", "Король", "Туз" };
