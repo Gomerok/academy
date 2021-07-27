@@ -1,18 +1,11 @@
 package by.academy.classwork.deal;
 
+import java.util.Objects;
+
 public class Bike extends Product {
 
 	private String type;
 	private int size;
-
-//	public void setAffiliation(int size) {
-//		if(size < 15) {
-//			this.type = "Детский";
-//		}else {
-//			this.type = "Мужской/Женский";
-//		}
-//		
-//	}
 
 	public Bike() {
 		super();
@@ -41,9 +34,29 @@ public class Bike extends Product {
 	}
 	
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(size, type);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Bike other = (Bike) obj;
+		return size == other.size && Objects.equals(type, other.type);
+	}
+
+	@Override
 	protected double discount(){
-		if(price<500) {
-			return 0.7;
+		if(size<15) {
+			return 0.3;
 		}
 		return 0;
 	}

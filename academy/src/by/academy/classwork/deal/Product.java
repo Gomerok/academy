@@ -47,9 +47,6 @@ public abstract class Product {
 		return (1- discount())*price * quantity;
 	}
 	
-	
-	
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;

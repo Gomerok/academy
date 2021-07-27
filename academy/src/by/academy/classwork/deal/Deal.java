@@ -61,7 +61,6 @@ public class Deal {
 			FullPrice += p.calcPrice();
 		}
 		return FullPrice;
-		
 	}
 	
 	public void deal() {
