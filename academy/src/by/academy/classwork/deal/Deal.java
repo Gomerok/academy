@@ -1,40 +1,39 @@
 package by.academy.classwork.deal;
 
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.Scanner;
-import java.util.Calendar;
 
 public class Deal {
 
 	private Product products[];
 	private User seller = new User();
 	private User buyer = new User();
-	private Calendar deadlineDate;
-	Date dateNow = new Date();
-	private Date date;
+	private static LocalDate deadlineDate;
+
+	public static LocalDate getDeadlineDate() {
+		return deadlineDate;
+	}
+
+	public void setDeadlineDate(LocalDate deadlineDate) {
+		this.deadlineDate = deadlineDate;
+	}
+
+	private final LocalDate date = LocalDate.now();
+
 	private static Scanner scan = new Scanner(System.in);
 	private static Scanner scan2 = new Scanner(System.in);
-
-	{
-		deadlineDate = Calendar.getInstance();
-		deadlineDate.setTime(dateNow);
-		deadlineDate.add(Calendar.DATE, 10);
-		System.out.println(deadlineDate.get(Calendar.DAY_OF_MONTH) + "-" + deadlineDate.get(Calendar.MONTH) + "-"
-				+ deadlineDate.get(Calendar.YEAR));
-	}
 
 	public Deal() {
 		super();
 	}
 
-	public Deal(Product[] products, User seller, User buyer, Date date) {
+	public Deal(Product[] products, User seller, User buyer, LocalDate date) {
 		super();
 		this.products = products;
 		this.seller = seller;
 		this.buyer = buyer;
-		this.date = date;
 	}
 
 	public Product[] getProducts() {
@@ -65,12 +64,13 @@ public class Deal {
 		this.buyer = buyer;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void printdeadlineDate() {
+		setDeadlineDate(date.plusDays(10));
+		System.out.println(getDeadlineDate());
 	}
 
 	public double calcFullPrice() {
@@ -166,7 +166,7 @@ public class Deal {
 			System.out.println("Меню:\n" + "Для ввода своих данных введите 0\n"
 					+ "Для просмотра списка возможных продуктов введите 1\n" + "Для добавления продукта введите 2\n"
 					+ "Для удаления продукта введите 3\n" + "Для просмотра продуктов введите 4\n"
-					+ "Для ввода даты сделки введте 5\n" + "Для просмотра информации о клиенте введите 6\n"
+					+ "Для просмотра deadline введите 5\n" + "Для просмотра информации о клиенте введите 6\n"
 					+ "Для вывода чека введите 7\n" + "Чтобы выйти введите 8\n");
 			choiceMenu = getScan().nextInt();
 			switch (choiceMenu) {
@@ -176,7 +176,7 @@ public class Deal {
 			case 1:
 				break;
 			case 2:
-				//addProducts();
+				// addProducts();
 				break;
 			case 3:
 				removeProducts();
@@ -185,12 +185,13 @@ public class Deal {
 
 				break;
 			case 5:
-				enterDate();
-				break;
+				// enterDate();
+				printdeadlineDate();
 			case 6:
 				getBuyer().getUserData();
 				break;
 			case 7:
+				System.out.println(date.getDayOfMonth() + "." + date.getMonthValue() + "." + date.getYear());
 				System.out.println("Bill:");
 				for (Product p : getProducts()) {
 					System.out.println(p.getName() + " price: " + p.calcPrice());
@@ -198,6 +199,7 @@ public class Deal {
 
 				System.out.println("-------------------------");
 				System.out.println(calcFullPrice());
+
 				break;
 			}
 		} while (choiceMenu != 8);

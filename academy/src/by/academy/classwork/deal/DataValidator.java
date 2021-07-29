@@ -10,6 +10,9 @@ import java.util.Calendar;
 //import java.util.*;
 //import java.text.*;
 
+//LocalDate переделать
+
+
 public class DataValidator implements Validator {
 
 	private static Pattern datePattern1 = Pattern
