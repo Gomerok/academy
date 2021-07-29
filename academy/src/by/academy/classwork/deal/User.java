@@ -1,9 +1,37 @@
 package by.academy.classwork.deal;
 
+import java.util.Objects;
+
 public class User {
 
 	private String name;
 	private int maney;
+	private String number;
+	private String email;
+
+	public String getNumber() {
+		return number;
+	}
+
+	public User(String name, int maney, String number, String email) {
+		super();
+		this.name = name;
+		this.maney = maney;
+		this.number = number;
+		this.email = email;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public User() {
 		super();
@@ -32,13 +60,16 @@ public class User {
 		this.maney = maney;
 	}
 
+	public void getUserData() {
+		System.out.println("Данные о пользователе:");
+		System.out.println(getName());
+		System.out.println(getNumber());
+		System.out.println(getEmail());
+	}
+	
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + maney;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
+		return Objects.hash(email, maney, name, number);
 	}
 
 	@Override
@@ -50,14 +81,8 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (maney != other.maney)
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
+		return Objects.equals(email, other.email) && maney == other.maney && Objects.equals(name, other.name)
+				&& Objects.equals(number, other.number);
 	}
 
 	@Override
@@ -67,6 +92,10 @@ public class User {
 		builder.append(name);
 		builder.append(", maney=");
 		builder.append(maney);
+		builder.append(", number=");
+		builder.append(number);
+		builder.append(", email=");
+		builder.append(email);
 		builder.append("]");
 		return builder.toString();
 	}

@@ -1,9 +1,12 @@
 package by.academy.classwork.deal;
 
+import java.text.ParseException;
+
 public class Application {
 
 	public static void main(String[] args) {
-
+		
+		
 		Deal deal = new Deal();
 		User seller = new User();
 		User buyer = new User();
@@ -18,18 +21,16 @@ public class Application {
 		
 		deal.setProducts(products);
 		
-		deal.deal();
-	
-//		System.out.println("Bill:");
-//		for(Product p: deal.getProducts()) {
-//			System.out.println(p.getName() +" price: " + p.calcPrice());
-//		}
-//		
-//		System.out.println("-------------------------");
-//		System.out.println(deal.calcFullPrice());
-		
-		
-		
+		//deal.deal();
+		//System.out.println(buyer.getNumber());
+		String str = "12/10/2021";
+		DataValidator datar = new DataValidator();
+		try {
+			datar.validate(str);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
