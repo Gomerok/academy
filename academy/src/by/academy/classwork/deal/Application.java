@@ -1,36 +1,33 @@
 package by.academy.classwork.deal;
 
-import java.text.ParseException;
-
 public class Application {
 
 	public static void main(String[] args) {
-		
-		
+//		1. Необходимо реализовать программу, которая будет позволять вводить сделки купли-продажи товаров между двумя участниками. В каждой сделке может быть несколько товаров, сумма сделки рассчитывается из суммы всех товаров. Сумма каждого товара рассчитывается из его стоимости и количества. Программа должна позволить ввести информацию о сделках, сохранить ее в памяти и вывести на экран. Ввод информацию осуществляется с экрана (консоли). Количество дополнительной информацию о сделке, участнике, товаре придумать самому (больше одного поля для класса). Сделка должна содержать массив продуктов.
+//		 
+//		2. Добавить 3 типа продукта, наследоваться от Product, реализовать метод подсчета цены для каждого продукта. Добавить расчет цены со скидкой. (В каждом продукте своя скидка).
+//
+//		6. Добавить в Deal меню, которое позволяет добавить продукт, удалить продукт из массива по названию продукта, подсчитать сделку(вывести инфу о сделке на экран).
+//
+//		7. Добавить в объект Deal поле deadline date, которую будет вводиться автоматически. (сегодня + 10 дней)
+
+
 		Deal deal = new Deal();
 		User seller = new User();
 		User buyer = new User();
 		Product products[] = new Product[3];
-		
-		products[0] = new Phone("Apple12", 200.0, 2,"red", "Apple");
-		products[1] = new Bike("Norco", 200.0,1,"Mountainbike",16);
-		products[2] = new Bike("Gaint", 200.0,1,"Roadbike",17);
-	
+
+		products[0] = new Phone("Apple12", 200.0, 2, "red", "Apple");
+		products[1] = new Bike("Norco", 200.0, 1, "Mountainbike", 16);
+		products[2] = new Bike("Gaint", 200.0, 1, "Roadbike", 17);
+
 		deal.setBuyer(buyer);
 		deal.setSeller(seller);
-		
+
 		deal.setProducts(products);
-		
-		//deal.deal();
-		//System.out.println(buyer.getNumber());
-		String str = "12/10/2021";
-		DataValidator datar = new DataValidator();
-		try {
-			datar.validate(str);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		deal.deal();
+
 	}
 
 }

@@ -8,10 +8,7 @@ public class User {
 	private int maney;
 	private String number;
 	private String email;
-
-	public String getNumber() {
-		return number;
-	}
+	private String dateOfBirth;
 
 	public User(String name, int maney, String number, String email) {
 		super();
@@ -19,6 +16,18 @@ public class User {
 		this.maney = maney;
 		this.number = number;
 		this.email = email;
+	}
+
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public String getNumber() {
+		return number;
 	}
 
 	public void setNumber(String number) {
@@ -66,7 +75,7 @@ public class User {
 		System.out.println(getNumber());
 		System.out.println(getEmail());
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(email, maney, name, number);

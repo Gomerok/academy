@@ -7,17 +7,10 @@ import java.util.Date;
 import java.text.ParseException;
 import java.util.Calendar;
 
-public class DataValidator implements Validator {
+//import java.util.*;
+//import java.text.*;
 
-//	Написать класс, который проверял бы введенную дату на соответствие патерна: (использовать regexp)
-//	   a) dd/MM/yyyy
-//	   b) dd-MM-yyyy 
-//
-//	С помощью SimpleDateFormat пропарсить данные, введеные с консоли, в зависимости от паттерна, к которому дата подходит.
-//	Вывести строку в следующем формате:
-//		День: <Day>
-//		Месяц: <Month>
-//		Year: <Year>
+public class DataValidator implements Validator {
 
 	private static Pattern datePattern1 = Pattern
 			.compile("(0[1-9]|[12][0-9]|3[01])[\\/](0[1-9]|1[012])[\\/](19\\d\\d|20\\d\\d)");
@@ -31,33 +24,36 @@ public class DataValidator implements Validator {
 			System.out.println("Вы ничего не ввели");
 			return false;
 		}
-		if (date.charAt(2) == '/') {
+		if (date.charAt(2) == '/' && date.charAt(5) == '/') {
 			Matcher matcher1 = datePattern1.matcher(date);
 			matcher1.find();
 			Date dateSDF = new SimpleDateFormat("dd/MM/yyyy").parse(matcher1.group());
+			// Date dateNow = new Date();
+		    //  SimpleDateFormat dateSDF = new SimpleDateFormat("\"Day: <dd>\nMonth: </MM/yyyy");
 			if (matcher1.matches()) {
+				System.out.println("Дата введена правильно");
+				//System.out.println("Текущая дата " + dateSDF.format(date));
+				calendar.setTime(dateSDF);
+				System.out.println("Day: <" + calendar.get(Calendar.DAY_OF_MONTH) + "> ");
+				System.out.println("Month: <" + (calendar.get(Calendar.MONTH)) + "> ");
+				System.out.println("Year: <" + calendar.get(Calendar.YEAR) + "> ");
+				return true;
+			}
+		}
+		if (date.charAt(2) == '-' && date.charAt(5) == '-') {
+			Matcher matcher2 = datePattern2.matcher(date);
+			matcher2.find();
+			Date dateSDF = new SimpleDateFormat("dd-MM-yyyy").parse(matcher2.group());
+			if (matcher2.matches()) {
 				System.out.println("Дата введена правильно");
 				calendar.setTime(dateSDF);
 				System.out.println("Day: <" + calendar.get(Calendar.DAY_OF_MONTH) + "> ");
 				System.out.println("Month: <" + (calendar.get(Calendar.MONTH) + 1) + "> ");
 				System.out.println("Year: <" + calendar.get(Calendar.YEAR) + "> ");
-//				День: <Day>
-//				Месяц: <Month>
-//				Year: <Year>
 				return true;
 			}
 		}
-		if (date.charAt(2) == '-') {
-			Matcher matcher = datePattern2.matcher(date);
-			if (matcher.matches()) {
-				System.out.println("Дата введена правильно");
-//				День: <Day>
-//				Месяц: <Month>
-//				Year: <Year>
-				return true;
-			}
-		}
-		System.out.println("Дата введена некорректно");
+		System.out.println("Дата введена некорректно, введите заново");
 		return false;
 
 	}

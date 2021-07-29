@@ -1,17 +1,29 @@
 package by.academy.classwork.deal;
 
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.Calendar;
 
 public class Deal {
 
 	private Product products[];
 	private User seller = new User();
 	private User buyer = new User();
+	private Calendar deadlineDate;
+	Date dateNow = new Date();
 	private Date date;
 	private static Scanner scan = new Scanner(System.in);
 	private static Scanner scan2 = new Scanner(System.in);
+
+	{
+		deadlineDate = Calendar.getInstance();
+		deadlineDate.setTime(dateNow);
+		deadlineDate.add(Calendar.DATE, 10);
+		System.out.println(deadlineDate.get(Calendar.DAY_OF_MONTH) + "-" + deadlineDate.get(Calendar.MONTH) + "-"
+				+ deadlineDate.get(Calendar.YEAR));
+	}
 
 	public Deal() {
 		super();
@@ -72,6 +84,22 @@ public class Deal {
 		return fullPrice;
 	}
 
+	public void enterDate() {
+		System.out.println("Введите дату в формате dd/MM/yyyy или dd-MM-yyyy:");
+		String dataTemp;
+		DataValidator dataValidate = new DataValidator();
+
+		try {
+			do {
+				dataTemp = scan2.nextLine();
+			} while (dataValidate.validate(dataTemp) == false);
+			getBuyer().setDateOfBirth(dataTemp);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 	public void initializationUser() {
 		System.out.println("Введите свои данные:\n" + "Имя:");
 		getBuyer().setName(scan.nextLine());
@@ -114,8 +142,13 @@ public class Deal {
 		} while (getBuyer().getEmail() == null);
 	}
 
-	public void addProducts() {
-
+	public void addProduct(Product product) {
+		Product[] addProd = new Product[products.length + 1];
+		for (int i = 0; i < products.length; i++) {
+			addProd[i] = products[i];
+		}
+		addProd[products.length] = product;
+		products = addProd;
 	}
 
 	public void removeProducts() {
@@ -124,34 +157,40 @@ public class Deal {
 
 	public void createProducts() {
 	}
-	
+
 	public void deal() {
 //		+37544-794-32-59
 //		danila.gomerov@gmail.com
-		initializationUser();
 		int choiceMenu = 0;
 		do {
-			System.out.println("Меню:\n" + "Для просмотра списка возможных продуктов введите 1\n"
-					+ "Для добавления продукта введите 2\n" + "Для удаления продукта введите 3\n"
-					+ "Для просмотра продуктов введите 4\n" + "Для просмотра информации о клиенте введите 5\n"
-					+ "Для вывода чека введите 6\n" + "Чтобы выйти введите 7\n");
+			System.out.println("Меню:\n" + "Для ввода своих данных введите 0\n"
+					+ "Для просмотра списка возможных продуктов введите 1\n" + "Для добавления продукта введите 2\n"
+					+ "Для удаления продукта введите 3\n" + "Для просмотра продуктов введите 4\n"
+					+ "Для ввода даты сделки введте 5\n" + "Для просмотра информации о клиенте введите 6\n"
+					+ "Для вывода чека введите 7\n" + "Чтобы выйти введите 8\n");
 			choiceMenu = getScan().nextInt();
 			switch (choiceMenu) {
+			case 0:
+				initializationUser();
+				break;
 			case 1:
 				break;
 			case 2:
-				addProducts();
+				//addProducts();
 				break;
 			case 3:
 				removeProducts();
 				break;
 			case 4:
-				
+
 				break;
 			case 5:
-				getBuyer().getUserData();
+				enterDate();
 				break;
 			case 6:
+				getBuyer().getUserData();
+				break;
+			case 7:
 				System.out.println("Bill:");
 				for (Product p : getProducts()) {
 					System.out.println(p.getName() + " price: " + p.calcPrice());
@@ -161,7 +200,7 @@ public class Deal {
 				System.out.println(calcFullPrice());
 				break;
 			}
-		} while (choiceMenu != 7);
+		} while (choiceMenu != 8);
 
 	}
 
