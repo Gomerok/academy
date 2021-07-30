@@ -1,5 +1,6 @@
 package by.academy.classwork.deal;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class User {
@@ -8,7 +9,7 @@ public class User {
 	private int maney;
 	private String number;
 	private String email;
-	private String dateOfBirth;
+	private LocalDate dateOfBirth;
 
 	public User(String name, int maney, String number, String email) {
 		super();
@@ -18,11 +19,11 @@ public class User {
 		this.email = email;
 	}
 
-	public String getDateOfBirth() {
+	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(String dateOfBirth) {
+	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
@@ -71,9 +72,11 @@ public class User {
 
 	public void getUserData() {
 		System.out.println("Данные о пользователе:");
-		System.out.println(getName());
-		System.out.println(getNumber());
-		System.out.println(getEmail());
+		System.out.println("Имя: " + getName());
+		System.out.println("Телефон: " + getNumber());
+		System.out.println("Email: " + getEmail());
+		System.out.println("День рождения: " + getDateOfBirth().getDayOfMonth() + "." + getDateOfBirth().getMonthValue()
+				+ "." + getDateOfBirth().getYear());
 	}
 
 	@Override

@@ -1,6 +1,5 @@
 package by.academy.classwork.deal;
 
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -10,18 +9,8 @@ public class Deal {
 	private Product products[];
 	private User seller = new User();
 	private User buyer = new User();
-	private static LocalDate deadlineDate;
-
-	public static LocalDate getDeadlineDate() {
-		return deadlineDate;
-	}
-
-	public void setDeadlineDate(LocalDate deadlineDate) {
-		this.deadlineDate = deadlineDate;
-	}
-
+	private LocalDate deadlineDate;
 	private final LocalDate date = LocalDate.now();
-
 	private static Scanner scan = new Scanner(System.in);
 	private static Scanner scan2 = new Scanner(System.in);
 
@@ -84,25 +73,23 @@ public class Deal {
 		return fullPrice;
 	}
 
-	public void enterDate() {
+	public void enterDateOfBirth() {
 		System.out.println("Введите дату в формате dd/MM/yyyy или dd-MM-yyyy:");
 		String dataTemp;
 		DataValidator dataValidate = new DataValidator();
 
-		try {
-			do {
-				dataTemp = scan2.nextLine();
-			} while (dataValidate.validate(dataTemp) == false);
-			getBuyer().setDateOfBirth(dataTemp);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		do {
+			dataTemp = scan2.nextLine();
+		} while (dataValidate.validate(dataTemp) == false);
+		getBuyer().setDateOfBirth(dataValidate.getDate());
 
 	}
 
 	public void initializationUser() {
 		System.out.println("Введите свои данные:\n" + "Имя:");
-		getBuyer().setName(scan.nextLine());
+		getBuyer().setName(scan2.nextLine());
+		System.out.println(getBuyer().getName());
+		enterDateOfBirth();
 		System.out.println(
 				"У вас американский или белорусский номер?\n" + "Если американский введите 1, если белорусский 2");
 		String userField;
@@ -158,9 +145,15 @@ public class Deal {
 	public void createProducts() {
 	}
 
+	public LocalDate getDeadlineDate() {
+		return deadlineDate;
+	}
+
+	public void setDeadlineDate(LocalDate deadlineDate) {
+		this.deadlineDate = deadlineDate;
+	}
+
 	public void deal() {
-//		+37544-794-32-59
-//		danila.gomerov@gmail.com
 		int choiceMenu = 0;
 		do {
 			System.out.println("Меню:\n" + "Для ввода своих данных введите 0\n"
@@ -176,17 +169,18 @@ public class Deal {
 			case 1:
 				break;
 			case 2:
-				// addProducts();
+				//addProducts();
 				break;
 			case 3:
 				removeProducts();
 				break;
 			case 4:
-
+				getProducts()[1].getPrice();
 				break;
 			case 5:
-				// enterDate();
+				
 				printdeadlineDate();
+				break;
 			case 6:
 				getBuyer().getUserData();
 				break;
