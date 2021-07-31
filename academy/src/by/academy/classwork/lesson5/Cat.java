@@ -7,7 +7,6 @@ public class Cat {
 
 	public Cat() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getNickname() {
