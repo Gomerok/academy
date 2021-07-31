@@ -85,10 +85,10 @@ public class Deal {
 
 	}
 
-	public void initializationUser() {
+	public void initializationUser(User user) {
 		System.out.println("Введите свои данные:\n" + "Имя:");
-		getBuyer().setName(scan2.nextLine());
-		System.out.println(getBuyer().getName());
+		user.setName(scan2.nextLine());
+		System.out.println(user.getName());
 		enterDateOfBirth();
 		System.out.println(
 				"У вас американский или белорусский номер?\n" + "Если американский введите 1, если белорусский 2");
@@ -103,7 +103,7 @@ public class Deal {
 				do {
 					userField = scan2.nextLine();
 				} while (validateAmericanPhone.validate(userField) == false);
-				getBuyer().setNumber(userField);
+				user.setNumber(userField);
 				break;
 			case 2:
 				System.out.println("Введите ,белорусский номер номер (+375..-...-..-..):");
@@ -111,22 +111,22 @@ public class Deal {
 				do {
 					userField = scan2.nextLine();
 				} while (validateBelarusPhone.validate(userField) == false);
-				getBuyer().setNumber(userField);
+				user.setNumber(userField);
 				break;
 			default:
 				System.out.println("Введите 1 или 2:");
 			}
 
-		} while (getBuyer().getNumber() == null);
+		} while (user.getNumber() == null);
 
 		System.out.println("Введите email:");
 		EmailValidator validateEmail = new EmailValidator();
 		do {
 			userField = scan2.nextLine();
 			if (validateEmail.validate(userField) == true) {
-				getBuyer().setEmail(userField);
+				user.setEmail(userField);
 			}
-		} while (getBuyer().getEmail() == null);
+		} while (user.getEmail() == null);
 	}
 
 	public void addProduct(Product product) {
@@ -139,10 +139,29 @@ public class Deal {
 	}
 
 	public void removeProducts() {
-
+		Product[] removeProd = new Product[products.length - 1];
+		for (Product p : getProducts()) {
+			System.out.println(p.getName() + " price: " + p.calcPrice());
+		}
+		
+		System.out.println("Введите название продукта из списка который вы хотите удалить:");
+		
+		String nameProduct = scan2.nextLine();
+		
+		for (int i=0, j=0;j<products.length;j++) {
+			if(products[j].name.equals(nameProduct)!=true) {
+				removeProd[i]=products[j];
+				i++;
+			}
+		
+		}
+		products=removeProd;
 	}
 
-	public void createProducts() {
+	public Product createProducts() {
+		  Product product;
+		  product =new Phone("Apple7", 100.0, 1, "bluy", "Apple");
+		  return product;
 	}
 
 	public LocalDate getDeadlineDate() {
@@ -161,24 +180,22 @@ public class Deal {
 					+ "Для удаления продукта введите 3\n" + "Для просмотра продуктов введите 4\n"
 					+ "Для просмотра deadline введите 5\n" + "Для просмотра информации о клиенте введите 6\n"
 					+ "Для вывода чека введите 7\n" + "Чтобы выйти введите 8\n");
-			choiceMenu = getScan().nextInt();
+			choiceMenu = scan.nextInt();
 			switch (choiceMenu) {
 			case 0:
-				initializationUser();
+				initializationUser(buyer);
 				break;
 			case 1:
 				break;
 			case 2:
-				//addProducts();
+				addProduct(createProducts());
 				break;
 			case 3:
 				removeProducts();
 				break;
 			case 4:
-				getProducts()[1].getPrice();
 				break;
 			case 5:
-				
 				printdeadlineDate();
 				break;
 			case 6:
