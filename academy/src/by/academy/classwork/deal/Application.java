@@ -21,8 +21,8 @@ public class Application {
 		products[1] = new Bike("Norco", 200.0, 1, "Mountainbike", 16);
 		products[2] = new Bike("Gaint", 200.0, 1, "Roadbike", 17);
 
-//		deal.setBuyer(buyer);
-//		deal.setSeller(seller);
+		deal.setBuyer(buyer);
+		deal.setSeller(seller);
 
 		deal.setProducts(products);
 		
