@@ -3,6 +3,8 @@ package by.academy.classwork.deal;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Deal {
 
@@ -11,8 +13,9 @@ public class Deal {
 	private User buyer = new User();
 	private LocalDate deadlineDate;
 	private final LocalDate date = LocalDate.now();
-	private static Scanner scan = new Scanner(System.in);
-	private static Scanner scan2 = new Scanner(System.in);
+	private static Scanner scanStr = new Scanner(System.in);
+	private static Pattern patternInt = Pattern.compile("[+]?\\d+");
+	private static Pattern patternDouble = Pattern.compile("(-|\\+)?[0-9]+(\\.[0-9]{1,2})");
 
 	public Deal() {
 		super();
@@ -27,10 +30,6 @@ public class Deal {
 
 	public Product[] getProducts() {
 		return products;
-	}
-
-	public static Scanner getScan() {
-		return scan;
 	}
 
 	public void setProducts(Product[] products) {
@@ -79,7 +78,7 @@ public class Deal {
 		DataValidator dataValidate = new DataValidator();
 
 		do {
-			dataTemp = scan2.nextLine();
+			dataTemp = scanStr.nextLine();
 		} while (dataValidate.validate(dataTemp) == false);
 		getBuyer().setDateOfBirth(dataValidate.getDate());
 
@@ -87,21 +86,25 @@ public class Deal {
 
 	public void initializationUser(User user) {
 		System.out.println("Введите свои данные:\n" + "Имя:");
-		user.setName(scan2.nextLine());
-		System.out.println(user.getName());
+		user.setName(scanStr.nextLine());
 		enterDateOfBirth();
 		System.out.println(
 				"У вас американский или белорусский номер?\n" + "Если американский введите 1, если белорусский 2");
 		String userField;
 		int choicePhone;
 		do {
-			choicePhone = scan.nextInt();
+			choicePhone = intValidate();
+			while (choicePhone > 2 || choicePhone <= 0) {
+				System.out.println("1 или 2");
+				choicePhone = intValidate();
+			}
+
 			switch (choicePhone) {
 			case 1:
 				System.out.println("Введите американский номер (+1-...-...-....):");
 				AmericanPhoneValidator validateAmericanPhone = new AmericanPhoneValidator();
 				do {
-					userField = scan2.nextLine();
+					userField = scanStr.nextLine();
 				} while (validateAmericanPhone.validate(userField) == false);
 				user.setNumber(userField);
 				break;
@@ -109,7 +112,7 @@ public class Deal {
 				System.out.println("Введите ,белорусский номер номер (+375..-...-..-..):");
 				BelarusPhoneValidator validateBelarusPhone = new BelarusPhoneValidator();
 				do {
-					userField = scan2.nextLine();
+					userField = scanStr.nextLine();
 				} while (validateBelarusPhone.validate(userField) == false);
 				user.setNumber(userField);
 				break;
@@ -122,7 +125,7 @@ public class Deal {
 		System.out.println("Введите email:");
 		EmailValidator validateEmail = new EmailValidator();
 		do {
-			userField = scan2.nextLine();
+			userField = scanStr.nextLine();
 			if (validateEmail.validate(userField) == true) {
 				user.setEmail(userField);
 			}
@@ -139,29 +142,99 @@ public class Deal {
 	}
 
 	public void removeProducts() {
+
+		showProducts();
 		Product[] removeProd = new Product[products.length - 1];
-		for (Product p : getProducts()) {
-			System.out.println(p.getName() + " price: " + p.calcPrice());
+
+		System.out.println("Введите номер продукта в списке который вы хотите удалить:");
+
+		int productIndex = intValidate();
+		while (productIndex > products.length || productIndex < 0) {
+			System.out.println("Введите существующий номер!");
+			productIndex = intValidate();
 		}
-		
-		System.out.println("Введите название продукта из списка который вы хотите удалить:");
-		
-		String nameProduct = scan2.nextLine();
-		
-		for (int i=0, j=0;j<products.length;j++) {
-			if(products[j].name.equals(nameProduct)!=true) {
-				removeProd[i]=products[j];
+
+		for (int i = 0, j = 0; j < products.length; j++) {
+			if (products[j].equals(products[productIndex]) != true) {
+				removeProd[i] = products[j];
 				i++;
 			}
-		
+
 		}
-		products=removeProd;
+		products = removeProd;
 	}
 
 	public Product createProducts() {
-		  Product product;
-		  product =new Phone("Apple7", 100.0, 1, "bluy", "Apple");
-		  return product;
+		Product product;
+		System.out.println(
+				"Какой продукт вы хотиде добавить ?\n" + "1) Milk\n" + "2) Phone\n" + "3) Bike\n" + "Введите номер:");
+
+		int productIndex = intValidate();
+		while (productIndex > 3 || productIndex < 1) {
+			System.out.println("Введите существующий номер!");
+			productIndex = intValidate();
+		}
+
+		System.out.println("Введите название:");
+		String name = scanStr.nextLine();
+		System.out.println("Введите цену рубли и копейки через точку цифрами (р.к) :");
+		double price = doubleValidate();
+		System.out.println("Введите количество:");
+		int quantity = intValidate();
+
+		if (productIndex == 1) {
+			System.out.println("Введите название производителя:");
+			String manufacturer = scanStr.nextLine();
+			System.out.println("Введите объём:");
+			double volume = doubleValidate();
+			System.out.println("Введите жирность:");
+			double fatContent = doubleValidate();
+			product = new Milk(name, price, quantity, manufacturer, volume, fatContent);
+		}
+		if (productIndex == 2) {
+			System.out.println("Введите цвет:");
+			String color = scanStr.nextLine();
+			System.out.println("Введите название производителя:");
+			String brend = scanStr.nextLine();
+			product = new Phone(name, price, quantity, color, brend);
+		} else {
+			String type = scanStr.nextLine();
+			int size = intValidate();
+			product = new Bike(name, price, quantity, type, size);
+		}
+		return product;
+	}
+
+	public int intValidate() {
+		String str = scanStr.nextLine();
+		Matcher matcherInt = patternInt.matcher(str);
+		while (matcherInt.matches() == false) {
+			System.out.println("Введите число!");
+			str = scanStr.nextLine();
+			matcherInt = patternInt.matcher(str);
+		}
+		return Integer.parseInt(str);
+	}
+
+	public double doubleValidate() {
+		String str = scanStr.nextLine();
+		Matcher matcherDouble = patternDouble.matcher(str);
+		while (matcherDouble.matches() == false) {
+			System.out.println("Введите число с точкой!");
+			str = scanStr.nextLine();
+			matcherDouble = patternDouble.matcher(str);
+		}
+
+		return Double.parseDouble(str);
+	}
+
+	public void showProducts() {
+		int i = 0;
+		System.out.println("Продукты в корзине:");
+		for (Product p : getProducts()) {
+			System.out.println(i + ")" + p.getName() + " количество: " + p.quantity + " цена: " + p.calcPrice());
+			i++;
+		}
 	}
 
 	public LocalDate getDeadlineDate() {
@@ -173,19 +246,21 @@ public class Deal {
 	}
 
 	public void deal() {
-		int choiceMenu = 0;
+
+		int choiceMenu;
 		do {
-			System.out.println("Меню:\n" + "Для ввода своих данных введите 0\n"
-					+ "Для просмотра списка возможных продуктов введите 1\n" + "Для добавления продукта введите 2\n"
-					+ "Для удаления продукта введите 3\n" + "Для просмотра продуктов введите 4\n"
-					+ "Для просмотра deadline введите 5\n" + "Для просмотра информации о клиенте введите 6\n"
-					+ "Для вывода чека введите 7\n" + "Чтобы выйти введите 8\n");
-			choiceMenu = scan.nextInt();
+			System.out.println("Меню:\n" + "Для ввода данных buyer введите 0\n" + "Для ввода данных seller введите 1\n"
+					+ "Для добавления продукта введите 2\n" + "Для удаления продукта введите 3\n"
+					+ "Для просмотра выбранных продуктов введите 4\n" + "Для просмотра дедлайна сделки введите 5\n"
+					+ "Для просмотра информации о seller и buyer введите 6\n" + "Для вывода чека введите 7\n"
+					+ "Чтобы выйти введите 8\n");
+			choiceMenu = intValidate();
 			switch (choiceMenu) {
 			case 0:
 				initializationUser(buyer);
 				break;
 			case 1:
+				initializationUser(seller);
 				break;
 			case 2:
 				addProduct(createProducts());
@@ -194,12 +269,16 @@ public class Deal {
 				removeProducts();
 				break;
 			case 4:
+				showProducts();
 				break;
 			case 5:
 				printdeadlineDate();
 				break;
 			case 6:
-				getBuyer().getUserData();
+				System.out.println("Buyer: ");
+				buyer.getUserData();
+				System.out.println("Seller: ");
+				seller.getUserData();
 				break;
 			case 7:
 				System.out.println(date.getDayOfMonth() + "." + date.getMonthValue() + "." + date.getYear());

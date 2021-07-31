@@ -19,6 +19,13 @@ public class Milk extends Product {
 		this.fatContent = fatContent;
 	}
 
+	public Milk(String manufacturer, double volume, double fatContent) {
+		super();
+		this.manufacturer = manufacturer;
+		this.volume = volume;
+		this.fatContent = fatContent;
+	}
+
 	public String getManufacturer() {
 		return manufacturer;
 	}

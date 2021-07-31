@@ -71,12 +71,17 @@ public class User {
 	}
 
 	public void getUserData() {
-		System.out.println("Данные о пользователе:");
-		System.out.println("Имя: " + getName());
-		System.out.println("Телефон: " + getNumber());
-		System.out.println("Email: " + getEmail());
-		System.out.println("День рождения: " + getDateOfBirth().getDayOfMonth() + "." + getDateOfBirth().getMonthValue()
-				+ "." + getDateOfBirth().getYear());
+		if (getName() != null && getNumber() != null && getEmail() != null && getDateOfBirth() != null) {
+			System.out.println("Данные о пользователе:");
+			System.out.println("Имя: " + getName());
+			System.out.println("Телефон: " + getNumber());
+			System.out.println("Email: " + getEmail());
+			System.out.println("День рождения: " + getDateOfBirth().getDayOfMonth() + "."
+					+ getDateOfBirth().getMonthValue() + "." + getDateOfBirth().getYear());
+		} else {
+			System.out.println("Данные о пользователе ещё не введены!");
+		}
+
 	}
 
 	@Override

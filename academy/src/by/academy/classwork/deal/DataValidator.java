@@ -28,57 +28,57 @@ public class DataValidator implements Validator {
 	public boolean validate(String input) {
 		Matcher matcher1 = datePattern1.matcher(input);
 		Matcher matcher2 = datePattern2.matcher(input);
-		matcher1.find();
-		matcher2.find();
+		
 		if (input.equals(null)) {
 			System.out.println("Вы ничего не ввели");
 			return false;
 		}
 
-		if (input.charAt(2) == '/' && input.charAt(5) == '/') {
-			if ((Integer.parseInt(matcher1.group(5)) % 400 == 0) || ((Integer.parseInt(matcher1.group(5)) % 4 == 0)
-					&& (Integer.parseInt(matcher1.group(5)) % 100 != 0))) {
-				if (Integer.parseInt(matcher1.group(3)) == 2 && Integer.parseInt(matcher1.group(1)) > 29) {
-					System.out.println("Дата введена некорректно, введите заново");
-					return false;
-				}
-			} else if (Integer.parseInt(matcher1.group(1)) == 2 && Integer.parseInt(matcher1.group(1)) > 28) {
-				System.out.println("Дата введена некорректно, введите заново");
+		if (matcher1.matches()) {
+			if (leapYear(matcher1) == false) {
 				return false;
 			}
-			if (matcher1.matches()) {
-				date = LocalDate.parse(input, formatter1);
-				System.out.println("Дата введена правильно");
-				System.out.println("Day: <" + date.getDayOfMonth() + "> ");
-				System.out.println("Month: <" + date.getMonthValue() + "> ");
-				System.out.println("Year: <" + date.getYear() + "> ");
-				return true;
-			}
-		}
-		if (input.charAt(2) == '-' && input.charAt(5) == '-') {
-			if ((Integer.parseInt(matcher2.group(5)) % 400 == 0) || ((Integer.parseInt(matcher2.group(5)) % 4 == 0)
-					&& (Integer.parseInt(matcher2.group(5)) % 100 != 0))) {
-				if (Integer.parseInt(matcher2.group(3)) == 2 && Integer.parseInt(matcher2.group(1)) > 29) {
-					System.out.println("Дата введена некорректно, введите заново");
-					return false;
-				}
-			} else if (Integer.parseInt(matcher2.group(1)) == 2 && Integer.parseInt(matcher2.group(1)) > 28) {
-				System.out.println("Дата введена некорректно, введите заново");
-				return false;
-			}
+			date = LocalDate.parse(input, formatter1);
+			System.out.println("Дата введена правильно");
+			System.out.println("Day: <" + date.getDayOfMonth() + "> ");
+			System.out.println("Month: <" + date.getMonthValue() + "> ");
+			System.out.println("Year: <" + date.getYear() + "> ");
+			return true;
 
-			if (matcher2.matches()) {
-				date = LocalDate.parse(input, formatter2);
-				System.out.println("Дата введена правильно");
-				System.out.println("Day: <" + date.getDayOfMonth() + "> ");
-				System.out.println("Month: <" + date.getMonthValue() + "> ");
-				System.out.println("Year: <" + date.getYear() + "> ");
-				return true;
+		}
+		if (matcher2.matches()) {
+			if (leapYear(matcher2) == false) {
+				return false;
 			}
+			date = LocalDate.parse(input, formatter2);
+			System.out.println("Дата введена правильно");
+			System.out.println("Day: <" + date.getDayOfMonth() + "> ");
+			System.out.println("Month: <" + date.getMonthValue() + "> ");
+			System.out.println("Year: <" + date.getYear() + "> ");
+			return true;
 		}
 		System.out.println("Дата введена некорректно, введите заново");
 		return false;
 
+	}
+
+	public boolean leapYear(Matcher match) {
+		if ((Integer.parseInt(match.group(1)) == 31 && ((Integer.parseInt(match.group(3))) % 2) == 0)) {
+			System.out.println("Дата введена некорректно, введите заново");
+			return false;
+		}
+
+		if (((Integer.parseInt(match.group(5)) % 400 )== 0) || ((Integer.parseInt(match.group(5)) % 4 == 0) && (Integer.parseInt(match.group(5)) % 100 != 0))) {
+			System.out.println("cxvxv");
+			if (Integer.parseInt(match.group(3)) == 2 && Integer.parseInt(match.group(1)) > 29) {
+				System.out.println("Дата введена некорректно, введите заново");
+				return false;
+			}
+		} else if (Integer.parseInt(match.group(3)) == 2 && Integer.parseInt(match.group(1)) > 28) {
+			System.out.println("Дата введена некорректно, введите заново");
+			return false;
+		}
+		return true;
 	}
 
 }
