@@ -3,15 +3,15 @@ package by.academy.classwork.deal;
 import java.util.Objects;
 
 public class Phone extends Product {
-	
+
 	private String color;
 	private String brend;
-	
+
 	public Phone() {
 		super();
 	}
 
-	public Phone(String name, double price, int quantity,String color, String brend) {
+	public Phone(String name, double price, int quantity, String color, String brend) {
 		super(name, price, quantity);
 		this.color = color;
 		this.brend = brend;
@@ -32,15 +32,15 @@ public class Phone extends Product {
 	public void setBrend(String brend) {
 		this.brend = brend;
 	}
-	
+
 	@Override
 	protected double discount() {
-		if(quantity>3) {
+		if (quantity > 3) {
 			return 0.25;
 		}
 		return 0;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -49,7 +49,6 @@ public class Phone extends Product {
 		return result;
 	}
 
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -62,5 +61,15 @@ public class Phone extends Product {
 		return Objects.equals(brend, other.brend) && Objects.equals(color, other.color);
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Phone [color=");
+		builder.append(color);
+		builder.append(", brend=");
+		builder.append(brend);
+		builder.append("]");
+		return builder.toString();
+	}
 
 }

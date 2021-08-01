@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class AmericanPhoneValidator implements Validator {
 
 	private static Pattern americanPhonePattern = Pattern.compile("\\+\\d\\-\\d{3}-\\d{3}-\\d{4}");
-	
+
 	public static Pattern getAmericanPhonePattern() {
 		return americanPhonePattern;
 	}
@@ -17,8 +17,8 @@ public class AmericanPhoneValidator implements Validator {
 
 	@Override
 	public boolean validate(String number) {
-		
-		if(number == null){
+
+		if (number == null) {
 			System.out.println("Вы ничего не ввели, введите номер:");
 			return false;
 		}
@@ -29,7 +29,7 @@ public class AmericanPhoneValidator implements Validator {
 		} else {
 			System.out.println("Номер введён некорректно, введите заново:");
 			return false;
-		}	
+		}
 	}
 
 	@Override
@@ -44,4 +44,5 @@ public class AmericanPhoneValidator implements Validator {
 		builder.append("]");
 		return builder.toString();
 	}
+
 }

@@ -9,11 +9,11 @@ public class Application {
 		User buyer = new User();
 		Product products[] = new Product[4];
 
-		products[0] = new Phone("Apple12", 200.0, 2, "red", "Apple");
-		products[1] = new Bike("Norco", 200.0, 1, "Mountainbike", 16);
-		products[2] = new Bike("Gaint", 200.0, 1, "Roadbike", 17);
+		products[0] = new Phone("iPhone12", 1000.0, 2, "red", "Apple");
+		products[1] = new Bike("Norco", 2000.0, 1, "Mountainbike", 16);
+		products[2] = new Bike("Gaint", 2000.0, 1, "Roadbike", 17);
 		products[3] = new Milk("Молоко", 3.0, 1, "Савушкин продукт", 1.0, 10.0);
-		
+
 		deal.setBuyer(buyer);
 		deal.setSeller(seller);
 

@@ -11,7 +11,7 @@ public class Bike extends Product {
 		super();
 	}
 
-	public Bike(String name, double price, int quantity,String type, int size) {
+	public Bike(String name, double price, int quantity, String type, int size) {
 		super(name, price, quantity);
 		this.type = type;
 		this.size = size;
@@ -32,13 +32,21 @@ public class Bike extends Product {
 	public void setSize(int size) {
 		this.size = size;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + Objects.hash(size, type);
 		return result;
+	}
+
+	@Override
+	protected double discount() {
+		if (size < 15) {
+			return 0.3;
+		}
+		return 0;
 	}
 
 	@Override
@@ -54,10 +62,14 @@ public class Bike extends Product {
 	}
 
 	@Override
-	protected double discount(){
-		if(size<15) {
-			return 0.3;
-		}
-		return 0;
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Bike [type=");
+		builder.append(type);
+		builder.append(", size=");
+		builder.append(size);
+		builder.append("]");
+		return builder.toString();
 	}
+
 }

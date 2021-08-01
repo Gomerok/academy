@@ -19,13 +19,6 @@ public class Milk extends Product {
 		this.fatContent = fatContent;
 	}
 
-	public Milk(String manufacturer, double volume, double fatContent) {
-		super();
-		this.manufacturer = manufacturer;
-		this.volume = volume;
-		this.fatContent = fatContent;
-	}
-
 	public String getManufacturer() {
 		return manufacturer;
 	}
@@ -53,7 +46,7 @@ public class Milk extends Product {
 	@Override
 	protected double discount() {
 		if (volume > 3) {
-			return 0.25;
+			return 0.15;
 		}
 		return 0;
 	}
@@ -78,6 +71,19 @@ public class Milk extends Product {
 		return Double.doubleToLongBits(fatContent) == Double.doubleToLongBits(other.fatContent)
 				&& Objects.equals(manufacturer, other.manufacturer)
 				&& Double.doubleToLongBits(volume) == Double.doubleToLongBits(other.volume);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Milk [manufacturer=");
+		builder.append(manufacturer);
+		builder.append(", volume=");
+		builder.append(volume);
+		builder.append(", fatContent=");
+		builder.append(fatContent);
+		builder.append("]");
+		return builder.toString();
 	}
 
 }

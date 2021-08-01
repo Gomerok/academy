@@ -24,7 +24,7 @@ public abstract class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public double getPrice() {
 		return price;
 	}
@@ -40,13 +40,13 @@ public abstract class Product {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
+
 	protected abstract double discount();
-	
+
 	public double calcPrice() {
-		return (1- discount())*price * quantity;
+		return (1 - discount()) * price * quantity;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

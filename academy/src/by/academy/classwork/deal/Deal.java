@@ -72,7 +72,7 @@ public class Deal {
 		return fullPrice;
 	}
 
-	public void enterDateOfBirth() {
+	public void enterDateOfBirth(User user) {
 		System.out.println("Введите дату в формате dd/MM/yyyy или dd-MM-yyyy:");
 		String dataTemp;
 		DataValidator dataValidate = new DataValidator();
@@ -80,14 +80,14 @@ public class Deal {
 		do {
 			dataTemp = scanStr.nextLine();
 		} while (dataValidate.validate(dataTemp) == false);
-		getBuyer().setDateOfBirth(dataValidate.getDate());
+		user.setDateOfBirth(DataValidator.getDate());
 
 	}
 
 	public void initializationUser(User user) {
-		System.out.println("Введите свои данные:\n" + "Имя:");
+		System.out.println("Введите данные:\n" + "Имя:");
 		user.setName(scanStr.nextLine());
-		enterDateOfBirth();
+		enterDateOfBirth(user);
 		System.out.println(
 				"У вас американский или белорусский номер?\n" + "Если американский введите 1, если белорусский 2");
 		String userField;
@@ -249,38 +249,38 @@ public class Deal {
 
 		int choiceMenu;
 		do {
-			System.out.println("Меню:\n" + "Для ввода данных buyer введите 0\n" + "Для ввода данных seller введите 1\n"
-					+ "Для добавления продукта введите 2\n" + "Для удаления продукта введите 3\n"
-					+ "Для просмотра выбранных продуктов введите 4\n" + "Для просмотра дедлайна сделки введите 5\n"
-					+ "Для просмотра информации о seller и buyer введите 6\n" + "Для вывода чека введите 7\n"
-					+ "Чтобы выйти введите 8\n");
+			System.out.println("Меню:\n" + "Для ввода данных buyer введите 1\n" + "Для ввода данных seller введите 2\n"
+					+ "Для добавления продукта введите 3\n" + "Для удаления продукта введите 4\n"
+					+ "Для просмотра выбранных продуктов введите 5\n" + "Для просмотра дедлайна сделки введите 6\n"
+					+ "Для просмотра информации о seller и buyer введите 7\n" + "Для вывода чека введите 8\n"
+					+ "Чтобы выйти введите 9\n");
 			choiceMenu = intValidate();
 			switch (choiceMenu) {
-			case 0:
+			case 1:
 				initializationUser(buyer);
 				break;
-			case 1:
+			case 2:
 				initializationUser(seller);
 				break;
-			case 2:
+			case 3:
 				addProduct(createProducts());
 				break;
-			case 3:
+			case 4:
 				removeProducts();
 				break;
-			case 4:
+			case 5:
 				showProducts();
 				break;
-			case 5:
+			case 6:
 				printdeadlineDate();
 				break;
-			case 6:
+			case 7:
 				System.out.println("Buyer: ");
 				buyer.getUserData();
 				System.out.println("Seller: ");
 				seller.getUserData();
 				break;
-			case 7:
+			case 8:
 				System.out.println(date.getDayOfMonth() + "." + date.getMonthValue() + "." + date.getYear());
 				System.out.println("Bill:");
 				for (Product p : getProducts()) {
@@ -292,7 +292,7 @@ public class Deal {
 
 				break;
 			}
-		} while (choiceMenu != 8);
+		} while (choiceMenu != 9);
 
 	}
 

@@ -6,17 +6,21 @@ import java.util.Objects;
 public class User {
 
 	private String name;
-	private int maney;
 	private String number;
 	private String email;
 	private LocalDate dateOfBirth;
 
-	public User(String name, int maney, String number, String email) {
+	public User() {
+		super();
+
+	}
+
+	public User(String name, String number, String email, LocalDate dateOfBirth) {
 		super();
 		this.name = name;
-		this.maney = maney;
 		this.number = number;
 		this.email = email;
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	public LocalDate getDateOfBirth() {
@@ -43,31 +47,12 @@ public class User {
 		this.email = email;
 	}
 
-	public User() {
-		super();
-
-	}
-
-	public User(String name, int maney) {
-		super();
-		this.name = name;
-		this.maney = maney;
-	}
-
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public int getManey() {
-		return maney;
-	}
-
-	public void setManey(int maney) {
-		this.maney = maney;
 	}
 
 	public void getUserData() {
@@ -86,7 +71,7 @@ public class User {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, maney, name, number);
+		return Objects.hash(dateOfBirth, email, name, number);
 	}
 
 	@Override
@@ -98,8 +83,8 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(email, other.email) && maney == other.maney && Objects.equals(name, other.name)
-				&& Objects.equals(number, other.number);
+		return Objects.equals(dateOfBirth, other.dateOfBirth) && Objects.equals(email, other.email)
+				&& Objects.equals(name, other.name) && Objects.equals(number, other.number);
 	}
 
 	@Override
@@ -107,12 +92,12 @@ public class User {
 		StringBuilder builder = new StringBuilder();
 		builder.append("User [name=");
 		builder.append(name);
-		builder.append(", maney=");
-		builder.append(maney);
 		builder.append(", number=");
 		builder.append(number);
 		builder.append(", email=");
 		builder.append(email);
+		builder.append(", dateOfBirth=");
+		builder.append(dateOfBirth);
 		builder.append("]");
 		return builder.toString();
 	}
