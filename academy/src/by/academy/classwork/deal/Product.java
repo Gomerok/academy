@@ -43,6 +43,8 @@ public abstract class Product {
 
 	protected abstract double discount();
 
+	protected abstract String[] getParameters();
+	
 	public double calcPrice() {
 		return (1 - discount()) * price * quantity;
 	}

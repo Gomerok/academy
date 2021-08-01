@@ -42,6 +42,15 @@ public class Phone extends Product {
 	}
 
 	@Override
+	protected String[] getParameters() {
+		String parameters[] = new String[2];
+
+		parameters[0] = brend;
+		parameters[1] = color;
+		return parameters;
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();

@@ -52,6 +52,16 @@ public class Milk extends Product {
 	}
 
 	@Override
+	protected String[] getParameters() {
+		String parameters[] = new String[3];
+
+		parameters[0] = Double.toString(fatContent);
+		parameters[1] = manufacturer;
+		parameters[2] = Double.toString(volume);
+		return parameters;
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
