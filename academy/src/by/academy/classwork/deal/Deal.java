@@ -220,7 +220,7 @@ public class Deal {
 		String str = scanStr.nextLine();
 		Matcher matcherDouble = patternDouble.matcher(str);
 		while (matcherDouble.matches() == false) {
-			System.out.println("Введите число с точкой!");
+			System.out.println("Введите число с плавающей точкой!");
 			str = scanStr.nextLine();
 			matcherDouble = patternDouble.matcher(str);
 		}
