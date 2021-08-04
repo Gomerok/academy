@@ -95,7 +95,10 @@ public class DataValidator implements Validator {
 	}
 
 	public boolean leapYear(Matcher match) {
-		if ((Integer.parseInt(match.group(1)) == 31 && ((Integer.parseInt(match.group(3))) % 2) == 0)) {
+		if ((Integer.parseInt(match.group(1)) == 31 && (Integer.parseInt(match.group(3))) == 4)
+				|| (Integer.parseInt(match.group(1)) == 31 && (Integer.parseInt(match.group(3))) == 6)
+				|| (Integer.parseInt(match.group(1)) == 31 && (Integer.parseInt(match.group(3))) == 9)
+				|| (Integer.parseInt(match.group(1)) == 31 && (Integer.parseInt(match.group(3))) == 11)) {
 			System.out.println("Дата введена некорректно, введите заново");
 			return false;
 		}
