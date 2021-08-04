@@ -4,8 +4,7 @@ public class ArrayListDemo {
 
 	public static void main(String[] args) {
 
-		MyArrayList<String> arr = new MyArrayList<>(4);
-
+		MyArrayList<String> arr = new MyArrayList<>();
 		arr.add("Home");
 		arr.add("Work");
 		arr.add("3");
@@ -14,7 +13,7 @@ public class ArrayListDemo {
 		arr.add("List");
 		arr.add("Demo");
 		
-		for(int i=0;i<arr.getIndexLastObj();i++) {
+		for(int i=0;i<=arr.getIndexLastObj();i++) {
 			System.out.println(arr.get(i));
 		}
 		System.out.println("///////////");
@@ -24,9 +23,12 @@ public class ArrayListDemo {
 		arr.remove("List");
 		System.out.println(arr.getIndexLastObj());
 		System.out.println(arr.getSize());
-		for(int i=0;i<arr.getIndexLastObj();i++) {
+		System.out.println("///////////");
+		for (int i = 0; i <= arr.getIndexLastObj();i++) {
 			System.out.println(arr.get(i));
 		}
+		
+
 	}
 
 }

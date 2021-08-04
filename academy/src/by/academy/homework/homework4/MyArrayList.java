@@ -18,65 +18,65 @@ public class MyArrayList<T> {
 //	7) удаление элемента по индексу (remove(int i)
 //	8) удаление элемента по значению (remove(T obj))
 
-	private Object[] arr;
+	private T[] arr;
 	private int size = 16;
-	private int pointer = 0;
+	private int pointer = -1;
 
 	public MyArrayList() {
 		super();
-		this.arr = new Object[size];
+		this.arr = (T[]) new Object[size];
 	}
 
-	public MyArrayList(int initialCapacity) {
-		this.arr = new Object[initialCapacity];
-		this.size = initialCapacity;
+	public MyArrayList(int init) {
+		this.arr = (T[]) new Object[init];
+		this.size = init;
 	}
 
 	public void add(T obj) {
-		if (pointer == this.size-1) {
-			this.size *= 2;
-			Object[] arrCopy = Arrays.copyOf(this.arr, this.size);
+			pointer++;
+		if (pointer == size - 1) {
+			size *= 2;
+			T[] arrCopy = Arrays.copyOf(arr, size);
 			arr = arrCopy;
 		}
-		arr[pointer++] = obj;
+		arr[pointer] = obj;
 	}
 
-	public Object get(int i) {
-		return this.arr[i];
+	public T get(int i) {
+		return (T) arr[i];
 	}
 
-	public Object getLast() {
-		return arr[pointer-1];
+	public T getLast() {
+		return (T) arr[pointer];
 	}
 
-	public Object getFirst() {
-		return this.arr[0];
+	public T getFirst() {
+		return (T) arr[0];
 	}
 
 	public int getSize() {
-		return this.size;
+		return size;
 	}
 
 	public int getIndexLastObj() {
-		int index = pointer - 1;
-		return index;
+		return pointer;
 	}
 
 	public void remove(int i) {
 		for (int k = i; k < pointer; k++) {
-			this.arr[k] = this.arr[k + 1];
+			arr[k] = arr[k + 1];
 		}
-		this.arr[pointer] = null;
+		arr[pointer] = null;
 		pointer--;
 	}
 
 	public void remove(T obj) {
-		for (int i = 0; i < this.pointer; i++) {
-			if (this.arr[i].equals(obj)) {
+		for (int i = 0; i < pointer; i++) {
+			if (arr[i].equals(obj)) {
 				for (int k = i; k < pointer; k++) {
-					this.arr[k] = this.arr[k + 1];
+					arr[k] = arr[k + 1];
 				}
-				this.arr[pointer] = null;
+				arr[pointer] = null;
 				pointer--;
 				break;
 			}
