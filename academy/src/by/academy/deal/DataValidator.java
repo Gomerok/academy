@@ -1,4 +1,4 @@
-package by.academy.classwork.deal;
+package by.academy.deal;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -114,14 +114,5 @@ public class DataValidator implements Validator {
 			return false;
 		}
 		return true;
-	}
-
-	
-	
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("DataValidator []");
-		return builder.toString();
 	}
 }

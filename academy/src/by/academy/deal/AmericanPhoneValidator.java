@@ -1,4 +1,4 @@
-package by.academy.classwork.deal;
+package by.academy.deal;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,18 +31,4 @@ public class AmericanPhoneValidator implements Validator {
 			return false;
 		}
 	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("AmericanPhoneValidator [getClass()=");
-		builder.append(getClass());
-		builder.append(", hashCode()=");
-		builder.append(hashCode());
-		builder.append(", toString()=");
-		builder.append(super.toString());
-		builder.append("]");
-		return builder.toString();
-	}
-
 }

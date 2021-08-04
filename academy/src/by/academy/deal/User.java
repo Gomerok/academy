@@ -1,4 +1,4 @@
-package by.academy.classwork.deal;
+package by.academy.deal;
 
 import java.time.LocalDate;
 import java.util.Objects;

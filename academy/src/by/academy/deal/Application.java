@@ -1,4 +1,4 @@
-package by.academy.classwork.deal;
+package by.academy.deal;
 
 public class Application {
 
