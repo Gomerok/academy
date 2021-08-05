@@ -2,6 +2,9 @@ package by.academy.deal;
 
 import java.util.Objects;
 
+import by.academy.deal.annotations.ProductProvaider;
+
+@ProductProvaider(lifeTime = 3, parts = { "Milk" })
 public class Milk extends Product {
 
 	private String manufacturer;

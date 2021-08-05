@@ -19,8 +19,9 @@ public class Application {
 
 		deal.setProducts(products);
 
-		deal.deal();
+		//deal.deal();
 
+		products[0].test();
 	}
 
 }

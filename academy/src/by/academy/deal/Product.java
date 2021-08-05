@@ -41,6 +41,11 @@ public abstract class Product {
 		this.quantity = quantity;
 	}
 
+	@Deprecated
+	public void test() {
+		System.out.println("Test");
+	}
+	
 	protected abstract double discount();
 
 	protected abstract String[] getParameters();

@@ -37,7 +37,7 @@ public class MyArrayList<T> implements Iterator<T> {
 			pointer++;
 		if (pointer == size - 1) {
 			size *= 2;
-			T[] arrCopy = Arrays.copyOf(arr, size);
+			T[] arrCopy = Arrays.copyOf(arr, size+1);
 			arr = arrCopy;
 		}
 		arr[pointer] = obj;

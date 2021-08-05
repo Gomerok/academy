@@ -2,6 +2,9 @@ package by.academy.deal;
 
 import java.util.Objects;
 
+import by.academy.deal.annotations.ProductProvaider;
+
+@ProductProvaider(country = "Chine", lifeTime = 5, parts = {"phoneParts" })
 public class Phone extends Product {
 
 	private String color;
