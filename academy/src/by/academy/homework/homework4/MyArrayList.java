@@ -1,8 +1,9 @@
 package by.academy.homework.homework4;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
-public class MyArrayList<T> {
+public class MyArrayList<T> implements Iterator<T> {
 
 //	Создать класс, который параметризуется любым типом (T). Имеет массив объектов нашего типа T.
 //	Содержит пустой конструктор, который по дефолту инициализирует пустой массив размерности 16.
@@ -81,5 +82,17 @@ public class MyArrayList<T> {
 				break;
 			}
 		}
+	}
+
+	@Override
+	public boolean hasNext() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public T next() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
