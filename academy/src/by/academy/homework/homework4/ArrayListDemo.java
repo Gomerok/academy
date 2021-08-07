@@ -32,8 +32,7 @@ public class ArrayListDemo {
 		System.out.println(arr.getCopasity());
 		System.out.println("///////////");
 		System.out.println(Arrays.toString(arr.getItems()));
-//		arr.set(7, "sdsdsd");
-//		arr.set(2, "qqqqqq");
+		arr.set(7, "homework4");
 		System.out.println("///////////");
 		System.out.println(Arrays.toString(arr.getItems()));
 		System.out.println("///////////");
