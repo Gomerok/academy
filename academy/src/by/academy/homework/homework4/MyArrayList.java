@@ -19,69 +19,109 @@ public class MyArrayList<T> implements Iterator<T> {
 //	7) удаление элемента по индексу (remove(int i)
 //	8) удаление элемента по значению (remove(T obj))
 
-	private T[] arr;
-	private int size = 16;
-	private int pointer = -1;
+	private T[] items;
+	private int pointer = 0;
 
+	@SuppressWarnings("unchecked")
 	public MyArrayList() {
 		super();
-		this.arr = (T[]) new Object[size];
+		this.items = (T[]) new Object[16];
 	}
 
+	@SuppressWarnings("unchecked")
 	public MyArrayList(int init) {
-		this.arr = (T[]) new Object[init];
-		this.size = init;
+		super();
+		this.items = (T[]) new Object[init];
+	}
+
+	public MyArrayList(T[] items) {
+		super();
+		this.items = items;
+		this.pointer = items.length - 1;
 	}
 
 	public void add(T obj) {
-			pointer++;
-		if (pointer == size - 1) {
-			size *= 2;
-			T[] arrCopy = Arrays.copyOf(arr, size+1);
-			arr = arrCopy;
+		if (pointer == items.length - 1) {
+			growth();
 		}
-		arr[pointer] = obj;
+		items[pointer++] = obj;
 	}
 
-	public T get(int i) {
-		return (T) arr[i];
+	private void growth() {
+		T[] arrCopy = Arrays.copyOf(items, items.length * 2 + 1);
+		items = arrCopy;
+	}
+
+	public T get(int index) {
+		if (index > pointer - 1 || index < 0) {
+			System.out.println("Выход за пределы массива");
+			return null;
+		}
+		return (T) items[index];
 	}
 
 	public T getLast() {
-		return (T) arr[pointer];
+		if (items[pointer - 1].equals(null)) {
+			System.out.println("Массив пуст");
+			return null;
+		}
+		return (T) items[pointer - 1];
 	}
 
 	public T getFirst() {
-		return (T) arr[0];
+		if (items[0].equals(null)) {
+			System.out.println("Массив пуст");
+			return null;
+		}
+		return (T) items[0];
 	}
 
-	public int getSize() {
-		return size;
+	public int getCopasity() {
+		return items.length;
 	}
 
 	public int getIndexLastObj() {
-		return pointer;
+		return pointer - 1;
 	}
 
-	public void remove(int i) {
-		for (int k = i; k < pointer; k++) {
-			arr[k] = arr[k + 1];
+	public void remove(int index) {
+		if (index > pointer - 1 || index < 0) {
+			System.out.println("Выход за пределы массива");
+			return;
 		}
-		arr[pointer] = null;
-		pointer--;
+		if (index < pointer - 1) {
+			System.arraycopy(items, index + 1, items, index, pointer - index - 1);
+		}
+		items[--pointer] = null;
 	}
 
 	public void remove(T obj) {
-		for (int i = 0; i < pointer; i++) {
-			if (arr[i].equals(obj)) {
-				for (int k = i; k < pointer; k++) {
-					arr[k] = arr[k + 1];
+		for (int i = 0; i < pointer - 1; i++) {
+			if (items[i].equals(obj)) {
+				if (i < pointer - 1) {
+					System.arraycopy(items, i + 1, items, i, pointer - i - 1);
 				}
-				arr[pointer] = null;
-				pointer--;
-				break;
+				items[--pointer] = null;
+				return;
 			}
 		}
+		System.out.println("Такого объекта нет");
+	}
+
+	public void set(int index, T item) {
+		if (index >= items.length || index < 0) {
+			System.out.println("Выход за пределы массива");
+			return;
+		}
+		if (index >= pointer) {
+			items[pointer++] = item;
+		} else {
+			items[index] = item;
+		}
+	}
+
+	public T[] getItems() {
+		return items;
 	}
 
 	@Override
