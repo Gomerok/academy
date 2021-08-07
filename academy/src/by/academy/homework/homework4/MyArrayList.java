@@ -3,21 +3,7 @@ package by.academy.homework.homework4;
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class MyArrayList<T> implements Iterator<T> {
-
-//	Создать класс, который параметризуется любым типом (T). Имеет массив объектов нашего типа T.
-//	Содержит пустой конструктор, который по дефолту инициализирует пустой массив размерности 16.
-//	Содержит конструктор, принимающий значение int и инитает им размер нашего массива.
-//
-//	Содержит методы:
-//	1) добавления в наш массив объекта типа T - add(T obj) (нужно помнить, что если массив заполнен, нам нужно его расширить с помощью Arrays.copyOf)
-//	2) взятие по индексу get(int i)
-//	3) взятие последнего элемента getLast()
-//	4) взятие первого элемента getFirst()
-//	5) вывод размера массива
-//	6) вывод индекса последнего заполненого элемента (не путать с размерностью)
-//	7) удаление элемента по индексу (remove(int i)
-//	8) удаление элемента по значению (remove(T obj))
+public class MyArrayList<T> implements Iterable<T> {
 
 	private T[] items;
 	private int pointer = 0;
@@ -98,12 +84,35 @@ public class MyArrayList<T> implements Iterator<T> {
 	public void remove(T obj) {
 		for (int i = 0; i < pointer - 1; i++) {
 			if (items[i].equals(obj)) {
-				if (i < pointer - 1) {
-					System.arraycopy(items, i + 1, items, i, pointer - i - 1);
-				}
+				System.arraycopy(items, i + 1, items, i, pointer - i - 1);
+				items[--pointer] = null;
+			}
+		}
+		System.out.println("Такого объекта нет");
+	}
+
+	public void removeFirst(T obj) {
+		for (int i = 0; i < pointer - 1; i++) {
+			if (items[i].equals(obj)) {
+				System.arraycopy(items, i + 1, items, i, pointer - i - 1);
 				items[--pointer] = null;
 				return;
 			}
+		}
+		System.out.println("Такого объекта нет");
+	}
+
+	public void removeLast(T obj) {
+		int lastPointer = 0;
+		for (int i = 0; i < pointer - 1; i++) {
+			if (items[i].equals(obj)) {
+				lastPointer = i;
+			}
+		}
+		if (lastPointer != 0) {
+			System.arraycopy(items, lastPointer + 1, items, lastPointer, pointer - lastPointer - 1);
+			items[--pointer] = null;
+			return;
 		}
 		System.out.println("Такого объекта нет");
 	}
@@ -124,15 +133,25 @@ public class MyArrayList<T> implements Iterator<T> {
 		return items;
 	}
 
-	@Override
-	public boolean hasNext() {
-		// TODO Auto-generated method stub
-		return false;
+	class MyLinkedListIterator implements Iterator<T> {
+		private int current=0;
+
+		@Override
+		public boolean hasNext() {
+			if (current == 0) { 
+				return pointer !=0;
+			}
+			return items[current] !=null;
+		}
+
+		@Override
+		public T next() {
+			return items[current++];
+		}
 	}
 
 	@Override
-	public T next() {
-		// TODO Auto-generated method stub
-		return null;
+	public Iterator<T> iterator() {
+		return new MyLinkedListIterator();
 	}
 }

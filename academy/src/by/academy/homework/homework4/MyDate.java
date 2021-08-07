@@ -1,19 +1,11 @@
 package by.academy.homework.homework4;
 
 import java.time.LocalDate;
-import java.util.Arrays;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MyDate {
-
-//	Создать объект класса Date, используя вложенные классы Год, Месяц, День. 
-//	Методы: задать дату, вывести на консоль день недели по заданной дате. 
-//	День недели представить в виде перечисления. 
-//	Рассчитать количество дней, в заданном временном промежутке.
-//	Один из конструкторов - строка в формате dd-mm-yyyy, добавить валидацию для этой строки. 
-//	После валидации в конструкторе создаем объекты класса Year, Month, Day.
-//	Добавить метод, который проверяет высокосный ли год или нет.
 
 	private String date;
 	private static Pattern datePattern = Pattern
@@ -91,8 +83,8 @@ public class MyDate {
 	public MyDate() {
 		super();
 		y = new Year(0);
-		m = new Month(0);
-		d = new Day(0);
+		m = new Month(1);
+		d = new Day(1);
 	}
 
 	public MyDate(String date) {
@@ -104,7 +96,7 @@ public class MyDate {
 			m = new Month(Integer.parseInt(ymd[1]));
 			d = new Day(Integer.parseInt(ymd[0]));
 		} else {
-			System.out.println("Дата введена некорректно");
+			System.out.println("Invailid date");
 		}
 	}
 
@@ -116,7 +108,7 @@ public class MyDate {
 			m.setMonth(Integer.parseInt(ymd[1]));
 			d.setDay(Integer.parseInt(ymd[0]));
 		} else {
-			System.out.println("Дата введена некорректно");
+			System.out.println("Invailid date");
 		}
 	}
 
@@ -131,17 +123,17 @@ public class MyDate {
 					|| (Integer.parseInt(matcher.group(1)) == 31 && (Integer.parseInt(matcher.group(3))) == 6)
 					|| (Integer.parseInt(matcher.group(1)) == 31 && (Integer.parseInt(matcher.group(3))) == 9)
 					|| (Integer.parseInt(matcher.group(1)) == 31 && (Integer.parseInt(matcher.group(3))) == 11)) {
-				System.out.println("Дата введена некорректно");
+				System.out.println("Invailid date");
 				return false;
 			}
 
 			if (leapYear(Integer.parseInt(matcher.group(5)))) {
 				if (Integer.parseInt(matcher.group(3)) == 2 && Integer.parseInt(matcher.group(1)) > 29) {
-					System.out.println("Дата введена некорректно");
+					System.out.println("Invailid date");
 					return false;
 				}
 			} else if (Integer.parseInt(matcher.group(3)) == 2 && Integer.parseInt(matcher.group(1)) > 28) {
-				System.out.println("Дата введена некорректно");
+				System.out.println("Invailid date");
 				return false;
 			}
 		}
@@ -164,20 +156,27 @@ public class MyDate {
 	}
 
 	public static int differenceOfDays(MyDate date1, MyDate date2) {
-		int diffdate = 0;
-		int i = date1.y.getYear();
-		if (date1.y.getYear() < date1.y.getYear()) {
-			i = date2.y.getYear();
+		if (date1.date.equals(date2.date)) {
+			return 0;
 		}
-		for (; i < date2.y.getYear(); i++) {
-			if (leapYear(date1.y.getYear())) {
-				diffdate += 366;
+		int diffDate = 0;
+		int minYear = date1.y.getYear();
+		int maxYear = date2.y.getYear();
+		if (date1.y.getYear() > date2.y.getYear()) {
+			minYear = date2.y.getYear();
+			maxYear = date1.y.getYear();
+		}
+		for (; minYear < maxYear; minYear++) {
+			if (leapYear(minYear)) {
+				diffDate += 366;
 			} else {
-				diffdate += 365;
+				diffDate += 365;
 			}
 		}
-		diffdate += date1.getDayOfYear(date1) - date2.getDayOfYear(date2);
-		return diffdate;
+		if (date1.getDayOfYear(date1) < date2.getDayOfYear(date2)) {
+			return (diffDate + (date1.getDayOfYear(date1) - date2.getDayOfYear(date2))) * (-1);
+		}
+		return (diffDate + (date2.getDayOfYear(date2) - date1.getDayOfYear(date1))) * (-1);
 	}
 
 	private int getDayOfYear(MyDate date) {
@@ -222,6 +221,16 @@ public class MyDate {
 		return sumDays;
 	}
 
+	public int getDayOfWeek() {
+		LocalDate dayOfWeek = LocalDate.of(y.getYear(), m.getMonth(), d.getDay());
+		for (DayOfWeek day : DayOfWeek.values()) {
+			if (dayOfWeek.getDayOfWeek().getValue() == day.getDaysIndex()) {
+				return day.getDaysIndex();
+			}
+		}
+		return 0;
+	}
+
 	enum DayOfWeek {
 		MONDAY(1), TUESDAY(2), WEDNESDAY(3), THURTHDAY(4), FRIDAY(5), SATURDAY(6), SUNDAY(7);
 
@@ -237,28 +246,22 @@ public class MyDate {
 
 	}
 
-	public int getDayOfWeek() {
-<<<<<<< HEAD
-		LocalDate dayOfWeek = LocalDate.of(y.getYear(), m.getMonth(), d.getDay());
-		for (DayOfWeek day : DayOfWeek.values()) {
-			if (dayOfWeek.getDayOfWeek().equals(day)) {
-				System.out.println(day);
-				return 1;
-			}
+	@Override
+	public int hashCode() {
+		return Objects.hash(d, date, m, y);
+	}
 
-		}
-		System.out.println(Arrays.toString(DayOfWeek.values()));
-=======
-//		LocalDate dayOfWeek = LocalDate.of(y.getYear(), m.getMonth(), d.getDay());
-//		for (DayOfWeek day : DayOfWeek.values()) {
-//			if (dayOfWeek.getDayOfWeek() = day) {
-//				System.out.println(day);
-//				return 1;
-//			}
-//
-//		}
->>>>>>> branch 'master' of https://github.com/Gomerok/academy.git
-		return 0;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MyDate other = (MyDate) obj;
+		return Objects.equals(d, other.d) && Objects.equals(date, other.date) && Objects.equals(m, other.m)
+				&& Objects.equals(y, other.y);
 	}
 
 }
