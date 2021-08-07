@@ -10,9 +10,9 @@ public class MyDate {
 	private String date;
 	private static Pattern datePattern = Pattern
 			.compile("(0[1-9]|[12][0-9]|3[01])([\\-])(0[1-9]|1[012])([\\-])(19\\d\\d|20\\d\\d)");
-	Year y;
-	Month m;
-	Day d;
+	private Year y;
+	private Month m;
+	private Day d;
 
 	class Year {
 		private int year;

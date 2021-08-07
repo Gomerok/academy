@@ -1,22 +1,22 @@
 package by.academy.homework.homework4;
 
 class MyIterator<T> {
-	T[] arr;
-	int current = 0;
+	private T[] items;
+	private int current = 0;
 
 	public MyIterator(T[] arr) {
 		super();
-		this.arr = arr;
+		this.items = arr;
 	}
 
 	public boolean hasNext() {
 		if (current == 0) {
-			return arr.length != 0 && arr[current] != null;
+			return items.length != 0 && items[current] != null;
 		}
-		return current != arr.length && arr[current] != null;
+		return current != items.length && items[current] != null;
 	}
 
 	public T next() {
-		return arr[current++];
+		return items[current++];
 	}
 }
