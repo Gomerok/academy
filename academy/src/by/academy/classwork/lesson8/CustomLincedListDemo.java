@@ -18,10 +18,10 @@ public class CustomLincedListDemo {
 		list.print();
 		list.remove(0);
 
-		Iterator<Integer> iterator = list.iterator();
-		while(iterator.hasNext()) {
-			System.out.println(iterator.next());
-		}
+//		Iterator<Integer> iterator = list.iterator();
+//		while(iterator.hasNext()) {
+//			System.out.println(iterator.next());
+//		}
 	}
 
 }
