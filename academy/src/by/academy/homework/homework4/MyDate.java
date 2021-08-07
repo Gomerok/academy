@@ -1,6 +1,7 @@
 package by.academy.homework.homework4;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -239,12 +240,13 @@ public class MyDate {
 	public int getDayOfWeek() {
 		LocalDate dayOfWeek = LocalDate.of(y.getYear(), m.getMonth(), d.getDay());
 		for (DayOfWeek day : DayOfWeek.values()) {
-			if (dayOfWeek.getDayOfWeek() = day) {
+			if (dayOfWeek.getDayOfWeek().equals(day)) {
 				System.out.println(day);
 				return 1;
 			}
 
 		}
+		System.out.println(Arrays.toString(DayOfWeek.values()));
 		return 0;
 	}
 
