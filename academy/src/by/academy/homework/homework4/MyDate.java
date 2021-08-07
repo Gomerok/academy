@@ -238,6 +238,7 @@ public class MyDate {
 	}
 
 	public int getDayOfWeek() {
+<<<<<<< HEAD
 		LocalDate dayOfWeek = LocalDate.of(y.getYear(), m.getMonth(), d.getDay());
 		for (DayOfWeek day : DayOfWeek.values()) {
 			if (dayOfWeek.getDayOfWeek().equals(day)) {
@@ -247,6 +248,16 @@ public class MyDate {
 
 		}
 		System.out.println(Arrays.toString(DayOfWeek.values()));
+=======
+//		LocalDate dayOfWeek = LocalDate.of(y.getYear(), m.getMonth(), d.getDay());
+//		for (DayOfWeek day : DayOfWeek.values()) {
+//			if (dayOfWeek.getDayOfWeek() = day) {
+//				System.out.println(day);
+//				return 1;
+//			}
+//
+//		}
+>>>>>>> branch 'master' of https://github.com/Gomerok/academy.git
 		return 0;
 	}
 
