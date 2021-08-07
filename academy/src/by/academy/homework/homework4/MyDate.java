@@ -237,14 +237,14 @@ public class MyDate {
 	}
 
 	public int getDayOfWeek() {
-		LocalDate dayOfWeek = LocalDate.of(y.getYear(), m.getMonth(), d.getDay());
-		for (DayOfWeek day : DayOfWeek.values()) {
-			if (dayOfWeek.getDayOfWeek() = day) {
-				System.out.println(day);
-				return 1;
-			}
-
-		}
+//		LocalDate dayOfWeek = LocalDate.of(y.getYear(), m.getMonth(), d.getDay());
+//		for (DayOfWeek day : DayOfWeek.values()) {
+//			if (dayOfWeek.getDayOfWeek() = day) {
+//				System.out.println(day);
+//				return 1;
+//			}
+//
+//		}
 		return 0;
 	}
 
