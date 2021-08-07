@@ -21,9 +21,7 @@ public class HeavyBoxDemo {
 	
 		for(HeavyBox l: list) {
 			System.out.println(l);
-			
 		}
-		list.remove(list.lastIndexOf(box5));
 		list.clear();
 	}
 
