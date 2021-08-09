@@ -2,6 +2,7 @@ package by.academy.homework.homework4;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.Objects;
 
 public class MyArrayList<T> implements Iterable<T> {
 
@@ -134,14 +135,14 @@ public class MyArrayList<T> implements Iterable<T> {
 	}
 
 	class MyLinkedListIterator implements Iterator<T> {
-		private int current=0;
+		private int current = 0;
 
 		@Override
 		public boolean hasNext() {
-			if (current == 0) { 
-				return pointer !=0;
+			if (current == 0) {
+				return pointer != 0;
 			}
-			return items[current] !=null;
+			return items[current] != null;
 		}
 
 		@Override
@@ -154,4 +155,26 @@ public class MyArrayList<T> implements Iterable<T> {
 	public Iterator<T> iterator() {
 		return new MyLinkedListIterator();
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.deepHashCode(items);
+		result = prime * result + Objects.hash(pointer);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MyArrayList other = (MyArrayList) obj;
+		return Arrays.deepEquals(items, other.items) && pointer == other.pointer;
+	}
+
 }
