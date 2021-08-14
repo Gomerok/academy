@@ -20,6 +20,7 @@ public class Task5 {
 			} else {
 				freqDictionary.put(c, 1);
 			}
+			
 		}
 		System.out.println(freqDictionary.toString());
 	}
