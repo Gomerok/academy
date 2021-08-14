@@ -1,10 +1,20 @@
 package by.academy.deal;
 
+import java.util.Comparator;
+
 public abstract class Product {
 
 	protected String name;
 	protected double price;
 	protected int quantity;
+
+	public static final Comparator<Product> productComparator = new Comparator<Product>() {
+
+		@Override
+		public int compare(Product o1, Product o2) {
+			return (int) (o2.price - o1.price);
+		}
+	};
 
 	public Product() {
 		super();
@@ -45,11 +55,11 @@ public abstract class Product {
 	public void test() {
 		System.out.println("Test");
 	}
-	
+
 	protected abstract double discount();
 
 	protected abstract String[] getParameters();
-	
+
 	public double calcPrice() {
 		return (1 - discount()) * price * quantity;
 	}

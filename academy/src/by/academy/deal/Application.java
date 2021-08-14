@@ -14,14 +14,16 @@ public class Application {
 		products[2] = new Bike("Gaint", 2400.0, 1, "Roadbike", 17);
 		products[3] = new Milk("Молоко", 3.0, 1, "Савушкин продукт", 1.0, 10.0);
 
-		deal.setBuyer(buyer);
-		deal.setSeller(seller);
+//		deal.setBuyer(buyer);
+//		deal.setSeller(seller);
 
 		deal.setProducts(products);
 
 		//deal.deal();
 
-		products[0].test();
+		System.out.println(products[0].getPrice());
+		System.out.println(products[1].getPrice());
+		System.out.println(products[2].getPrice());
 	}
 
 }
