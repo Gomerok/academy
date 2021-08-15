@@ -16,16 +16,11 @@ public class Task5 {
 			char c = input.charAt(i);
 			freq = freqDictionary.get(c);
 			if (freq != null) {
-				freqDictionary.put(c,freq+1);
+				freqDictionary.put(c, freq + 1);
 			} else {
 				freqDictionary.put(c, 1);
 			}
-			 
-			
-			
-			
-			
-			
+
 		}
 		System.out.println(freqDictionary.toString());
 	}
