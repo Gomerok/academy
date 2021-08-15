@@ -32,6 +32,7 @@ public class Task5 {
 			
 			
 			
+			
 		}
 		System.out.println(freqDictionary.toString());
 	}
