@@ -245,56 +245,56 @@ public class Deal {
 		this.deadlineDate = deadlineDate;
 	}
 
-	public void deal() {
-
-		int choiceMenu;
-		do {
-			System.out.println("Меню:\n" + "Для ввода данных buyer введите 1\n" + "Для ввода данных seller введите 2\n"
-					+ "Для добавления продукта введите 3\n" + "Для удаления продукта введите 4\n"
-					+ "Для просмотра выбранных продуктов введите 5\n" + "Для просмотра дедлайна сделки введите 6\n"
-					+ "Для просмотра информации о seller и buyer введите 7\n" + "Для вывода чека введите 8\n"
-					+ "Чтобы выйти введите 9\n");
-			choiceMenu = intValidate();
-			switch (choiceMenu) {
-			case 1:
-				initializationUser(buyer);
-				break;
-			case 2:
-				initializationUser(seller);
-				break;
-			case 3:
-				addProduct(createProducts());
-				break;
-			case 4:
-				removeProducts();
-				break;
-			case 5:
-				showProducts();
-				break;
-			case 6:
-				printdeadlineDate();
-				break;
-			case 7:
-				System.out.println("Buyer: ");
-				buyer.getUserData();
-				System.out.println("Seller: ");
-				seller.getUserData();
-				break;
-			case 8:
-				System.out.println(date.getDayOfMonth() + "." + date.getMonthValue() + "." + date.getYear());
-				System.out.println("Bill:");
-				for (Product p : getProducts()) {
-					System.out.println(p.getName() + " price: " + p.calcPrice());
-				}
-
-				System.out.println("-------------------------");
-				System.out.println(calcFullPrice());
-
-				break;
-			}
-		} while (choiceMenu != 9);
-
-	}
+//	public void deal() {
+//
+//		int choiceMenu;
+//		do {
+//			System.out.println("Меню:\n" + "Для ввода данных buyer введите 1\n" + "Для ввода данных seller введите 2\n"
+//					+ "Для добавления продукта введите 3\n" + "Для удаления продукта введите 4\n"
+//					+ "Для просмотра выбранных продуктов введите 5\n" + "Для просмотра дедлайна сделки введите 6\n"
+//					+ "Для просмотра информации о seller и buyer введите 7\n" + "Для вывода чека введите 8\n"
+//					+ "Чтобы выйти введите 9\n");
+//			choiceMenu = intValidate();
+//			switch (choiceMenu) {
+//			case 1:
+//				initializationUser(buyer);
+//				break;
+//			case 2:
+//				initializationUser(seller);
+//				break;
+//			case 3:
+//				addProduct(createProducts());
+//				break;
+//			case 4:
+//				removeProducts();
+//				break;
+//			case 5:
+//				showProducts();
+//				break;
+//			case 6:
+//				printdeadlineDate();
+//				break;
+//			case 7:
+//				System.out.println("Buyer: ");
+//				buyer.getUserData();
+//				System.out.println("Seller: ");
+//				seller.getUserData();
+//				break;
+//			case 8:
+//				System.out.println(date.getDayOfMonth() + "." + date.getMonthValue() + "." + date.getYear());
+//				System.out.println("Bill:");
+//				for (Product p : getProducts()) {
+//					System.out.println(p.getName() + " price: " + p.calcPrice());
+//				}
+//
+//				System.out.println("-------------------------");
+//				System.out.println(calcFullPrice());
+//
+//				break;
+//			}
+//		} while (choiceMenu != 9);
+//
+//	}
 
 	@Override
 	public int hashCode() {

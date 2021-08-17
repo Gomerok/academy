@@ -16,12 +16,12 @@ public class Application {
 
 		deal.setBuyer(buyer);
 		deal.setSeller(seller);
-
 		deal.setProducts(products);
 
-		//deal.deal();
+		DealMenu menu = new DealMenu(deal);
 
-		products[0].test();
+		menu.dealMenu();
+
 	}
 
 }
