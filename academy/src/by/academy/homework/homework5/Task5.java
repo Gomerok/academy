@@ -6,11 +6,9 @@ import java.util.Map;
 public class Task5 {
 
 	public static void main(String[] args) {
-//		Можно писать все в main. Не нужно создавать новых классов.
-//		Имеется текст. Следует составить для него частотный словарь:
-//		Создать Map<Character, Integer> для символов, в который мы заносим символ и его количество.
+
 		Map<Character, Integer> freqDictionary = new HashMap<>();
-		String input = "yasdyd asdddas ew reer";
+		String input = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
 		Integer freq = 0;
 		for (int i = 0; i < input.length(); i++) {
 			char c = input.charAt(i);
@@ -22,7 +20,7 @@ public class Task5 {
 			}
 
 		}
-		System.out.println(freqDictionary.toString());
+		System.out.println(freqDictionary);
 	}
 
 }

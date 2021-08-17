@@ -5,9 +5,9 @@ import java.util.Iterator;
 public class Task3MyIterator<T> implements Iterator<T> {
 //	Написать итератор по двумерному массиву. (Отдельный класс. Наследуемся от Iterator<T>)
 //	Протестировать в main.
-	T[][] arr;
-	int currenti = 0;
-	int currentj = 0;
+	private T[][] arr;
+	private int currenti = 0;
+	private int currentj = 0;
 
 	public Task3MyIterator(T[][] arr) {
 		super();
@@ -16,18 +16,22 @@ public class Task3MyIterator<T> implements Iterator<T> {
 
 	@Override
 	public boolean hasNext() {
-		if (currenti == 0) {
-			return arr.length != 0 && arr[currenti] != null;
+		if(currenti < arr.length && currentj < arr[currenti].length) {
+			return true;
 		}
-		return currenti != arr.length && arr[currenti] != null;
+		currenti = 0;
+		currentj = 0;
+		return false;
 	}
 
 	@Override
 	public T next() {
-		if(currentj==arr.length) {
-			
+		T next = arr[currenti][currentj++];
+		if (currentj >= arr[currenti].length) {
+			currenti++;
+			currentj = 0;
 		}
-		return arr[currentj][currenti++];
+		return next;
 	}
 
 }

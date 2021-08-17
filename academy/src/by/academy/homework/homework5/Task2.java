@@ -8,7 +8,7 @@ import java.util.Random;
 public class Task2 {
 	private static Random rand = new Random();
 
-	public static <T> void addItems(List<Integer> list) {
+	public static <T> void addRandomItems(List<Integer> list) {
 
 		for (int i = 0; i < 1000000; i++) {
 			list.add(rand.nextInt(1000));
@@ -23,19 +23,14 @@ public class Task2 {
 	}
 
 	public static void main(String[] args) {
-//		Можно писать все в main. Не нужно создавать новых классов.
-//		Напишите метод, который добавляет 1000000 элементов в ArrayList и LinkedList. 
-//		Напишите еще один метод, который выбирает из заполненного списка элемент наугад 100000 раз. 
-//		Замерьте время, которое потрачено на это. 
-//		Сравните результаты и предположите, почему они именно такие.
-
+		
 		ArrayList<Integer> aList = new ArrayList<>();
 		LinkedList<Integer> lList = new LinkedList<>();
 		long time = System.currentTimeMillis();
-		addItems(aList);
+		addRandomItems(aList);
 		System.out.println("Время добавления в ArrayList: " + (System.currentTimeMillis() - time));
 		time = System.currentTimeMillis();
-		addItems(lList);
+		addRandomItems(lList);
 		System.out.println("Время добавления в LinkedList: " + (System.currentTimeMillis() - time));
 
 		time = System.currentTimeMillis();
