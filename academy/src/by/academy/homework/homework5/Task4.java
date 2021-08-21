@@ -18,7 +18,7 @@ public class Task4 {
 
 		ArrayList<Integer> raiting = new ArrayList<>();
 		addRaiting(raiting);
-		System.out.println(raiting.toString());
+		System.out.println(raiting);
 		int value, max = raiting.get(0);
 
 		Iterator<Integer> iterator = raiting.iterator();

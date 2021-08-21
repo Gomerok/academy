@@ -3,8 +3,7 @@ package by.academy.homework.homework5;
 import java.util.Iterator;
 
 public class Task3MyIterator<T> implements Iterator<T> {
-//	Написать итератор по двумерному массиву. (Отдельный класс. Наследуемся от Iterator<T>)
-//	Протестировать в main.
+
 	private T[][] arr;
 	private int currenti = 0;
 	private int currentj = 0;
@@ -16,7 +15,7 @@ public class Task3MyIterator<T> implements Iterator<T> {
 
 	@Override
 	public boolean hasNext() {
-		if(currenti < arr.length && currentj < arr[currenti].length) {
+		if (currenti < arr.length && currentj < arr[currenti].length) {
 			return true;
 		}
 		currenti = 0;

@@ -18,20 +18,20 @@ public class Task2 {
 	public static <T> void selectionRandomItems(List<Integer> list) {
 
 		for (int i = 0; i < 100000; i++) {
-			list.get(rand.nextInt(99999));
+			list.get(100000);
 		}
 	}
 
 	public static void main(String[] args) {
-		
+
 		ArrayList<Integer> aList = new ArrayList<>();
 		LinkedList<Integer> lList = new LinkedList<>();
 		long time = System.currentTimeMillis();
 		addRandomItems(aList);
-		System.out.println("Время добавления в ArrayList: " + (System.currentTimeMillis() - time));
+		System.out.println("Время добавления 1000000 элементов в ArrayList: " + (System.currentTimeMillis() - time));
 		time = System.currentTimeMillis();
 		addRandomItems(lList);
-		System.out.println("Время добавления в LinkedList: " + (System.currentTimeMillis() - time));
+		System.out.println("Время добавления 1000000 элементов в LinkedList: " + (System.currentTimeMillis() - time));
 
 		time = System.currentTimeMillis();
 		selectionRandomItems(aList);
@@ -41,7 +41,11 @@ public class Task2 {
 		selectionRandomItems(lList);
 		System.out.println(
 				"Время получения 100000 рандомных элементов в LinkedList: " + (System.currentTimeMillis() - time));
-
+		System.out.println(
+				"Добавление элементов в ArrayList и LinkedList происходит относительно за одинаковое временя,\n"
+				+ "а вот взятие элементов по индексу в ArrayList значительно быстрее, так как в основе ArrayList лежит\n"
+				+ "массив взятие элемента которого = const, а в LinkedList чтобы взять элемент по индексу нужно пробежаться\n"
+				+ "по ссылкам от начального до нужного нам элемента, что при большом индексе очень времязатратно");
 	}
 
 }

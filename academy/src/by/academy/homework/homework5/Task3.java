@@ -4,17 +4,11 @@ public class Task3 {
 
 	public static void main(String[] args) {
 
-		//Integer[][] arr = new Integer[3][4];
-		Integer[][] arr1 = { { 1, 2, 3, 4 }, { 5, 6, 7, null }, { 8, 9 } };
+		Integer[][] arr1 = { { 1, 2, 3, 4 }, { 5, 7, null }, { 8, 9 } };
 		Task3MyIterator<Integer> iterator = new Task3MyIterator<>(arr1);
 
 		while (iterator.hasNext()) {
 			System.out.println(iterator.next());
 		}
-
-		while (iterator.hasNext()) {
-			System.out.println(iterator.next());
-		}
-
 	}
 }

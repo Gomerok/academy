@@ -12,12 +12,11 @@ public class Task1 {
 	}
 
 	public static void main(String[] args) {
-//		Можно писать все в main. Не нужно создавать новых классов.
-//		Напишите метод, который на вход получает коллекцию объектов, а возвращает коллекцию уже без дубликатов.
+
 		Collection<Integer> collection = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 4, 5, 6, 6));
-		System.out.println(collection.toString());
+		System.out.println(collection);
 		collection = removeDuplicates(collection);
-		System.out.println(collection.toString());
+		System.out.println(collection);
 	}
 
 }
