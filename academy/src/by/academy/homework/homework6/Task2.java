@@ -12,7 +12,7 @@ public class Task2 {
 
 		try {
 			FileReader read = new FileReader(
-					"C:\\Users\\User\\git\\academy\\academy\\src\\by\\academy\\homework\\homework6\\Task2Text.txt");
+					"C:\\Users\\User\\git\\academy\\academy\\src\\by\\academy\\homework\\homework6\\TasText.txt");
 			FileWriter write = new FileWriter(
 					"C:\\Users\\User\\git\\academy\\academy\\src\\by\\academy\\homework\\homework6\\Task2TextResult.txt",
 					false);
@@ -25,7 +25,7 @@ public class Task2 {
 			read.close();
 			write.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.err.println(e.getMessage());
 		}
 
 	}

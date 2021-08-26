@@ -33,7 +33,7 @@ public class Task1 {
 			}
 			write.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.err.println(e.getMessage());
 		}
 	}
 
