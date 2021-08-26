@@ -14,16 +14,26 @@ public class Application {
 		products[2] = new Bike("Gaint", 2400.0, 1, "Roadbike", 17);
 		products[3] = new Milk("Молоко", 3.0, 1, "Савушкин продукт", 1.0, 10.0);
 
+//<<<<<<< HEAD
+////		deal.setBuyer(buyer);
+////		deal.setSeller(seller);
+//
+//=======
 //		deal.setBuyer(buyer);
 //		deal.setSeller(seller);
-
-		deal.setProducts(products);
-
-		//deal.deal();
-
-		System.out.println(products[0].getPrice());
-		System.out.println(products[1].getPrice());
-		System.out.println(products[2].getPrice());
+//>>>>>>> branch 'master' of https://github.com/Gomerok/academy.git
+//		deal.setProducts(products);
+//
+//		DealMenu menu = new DealMenu(deal);
+//
+//<<<<<<< HEAD
+//		System.out.println(products[0].getPrice());
+//		System.out.println(products[1].getPrice());
+//		System.out.println(products[2].getPrice());
+//=======
+//		menu.dealMenu();
+//
+//>>>>>>> branch 'master' of https://github.com/Gomerok/academy.git
 	}
 
 }
