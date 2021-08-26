@@ -1,5 +1,7 @@
 package by.academy.deal;
 
+import java.util.function.Consumer;
+
 public class Application {
 
 	public static void main(String[] args) {
@@ -14,6 +16,18 @@ public class Application {
 		products[2] = new Bike("Gaint", 2400.0, 1, "Roadbike", 17);
 		products[3] = new Milk("Молоко", 3.0, 1, "Савушкин продукт", 1.0, 10.0);
 
+		
+		Phone phone= new Phone("IPhone12", 1000.0, 2, "red", "Apple");
+		
+		Consumer<Product> consumer1 = p -> {
+			System.out.println("Отправка "+p.getName());
+		};
+		
+		Consumer<Product> consumer2 = p -> {
+			System.out.println("Отгрузка "+p.getName());
+		};
+		consumer1.andThen(consumer2).accept(phone);
+		
 //<<<<<<< HEAD
 ////		deal.setBuyer(buyer);
 ////		deal.setSeller(seller);
