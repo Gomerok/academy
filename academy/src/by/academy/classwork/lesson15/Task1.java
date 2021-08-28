@@ -14,5 +14,7 @@ public class Task1 {
 				.collect(Collectors.toList());
 		System.out.println(list);
 	}
+//	Найти min/max 
+//	использовать map  
 
 }
