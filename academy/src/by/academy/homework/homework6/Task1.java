@@ -1,5 +1,6 @@
 package by.academy.homework.homework6;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -10,12 +11,13 @@ public class Task1 {
 	private static final String STOP = "stop";
 
 	public static void main(String[] args) {
-//		Прочесть информацию введеную из клавиатури и записать в созданный вами txt файл, если введена
-//		"stop" строка тогда закончить запись в файл.
-		try {
-			FileWriter write = new FileWriter(
-					"C:\\Users\\User\\git\\academy\\academy\\src\\by\\academy\\homework\\homework6\\Task1Text.txt",
-					false);
+
+		File dir = new File("src\\by\\academy\\homework\\homework6\\io");
+		if (!dir.exists()) {
+			dir.mkdirs();
+		}
+
+		try (FileWriter write = new FileWriter("src\\by\\academy\\homework\\homework6\\io\\Task1Text.txt", false)) {
 			String[] input = scan.nextLine().split(" ");
 			for (int i = 0; i < input.length; i++) {
 				if (!input[i].equals(STOP)) {
@@ -31,10 +33,10 @@ public class Task1 {
 					i = -1;
 				}
 			}
-			write.close();
 		} catch (IOException e) {
 			System.err.println(e.getMessage());
 		}
+		scan.close();
 	}
 
 }

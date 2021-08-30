@@ -1,5 +1,6 @@
 package by.academy.homework.homework6;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -7,23 +8,36 @@ import java.io.IOException;
 public class Task2 {
 
 	public static void main(String[] args) {
-		// Создать новый файл result.txt. Программно считать файл с текстом, удалить все
-		// пробелы и записать полученный текст в result.txt.
 
+		File dir = new File("src\\by\\academy\\homework\\homework6\\io");
+		if (!dir.exists()) {
+			dir.mkdirs();
+		}
+
+		File textFile = new File("src\\by\\academy\\homework\\homework6\\io\\Task2Text.txt");
+		if (!textFile.exists()) {
+			System.err.println("Text file has not been created");
+			return;
+		}
+
+		File resultFile = new File("src\\by\\academy\\homework\\homework6\\io\\Task2TextResult.txt");
 		try {
-			FileReader read = new FileReader(
-					"C:\\Users\\User\\git\\academy\\academy\\src\\by\\academy\\homework\\homework6\\TasText.txt");
-			FileWriter write = new FileWriter(
-					"C:\\Users\\User\\git\\academy\\academy\\src\\by\\academy\\homework\\homework6\\Task2TextResult.txt",
-					false);
+			if (!resultFile.exists()) {
+				resultFile.createNewFile();
+			}
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		try (FileReader readFile = new FileReader(textFile)) {
+			FileWriter writeFile = new FileWriter(resultFile, false);
+
 			int c;
-			while ((c = read.read()) != -1) {
+			while ((c = readFile.read()) != -1) {
 				if ((char) c != ' ') {
-					write.write(c);
+					writeFile.write(c);
 				}
 			}
-			read.close();
-			write.close();
+			writeFile.close();
 		} catch (IOException e) {
 			System.err.println(e.getMessage());
 		}
